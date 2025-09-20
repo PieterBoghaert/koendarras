@@ -1,6 +1,6 @@
 import { useState, useEffect, useRef } from 'react'
 import { Button } from '@/components/ui/button.jsx'
-import { ChevronDown, Play, Menu, X } from 'lucide-react'
+import { ChevronDown, Play, Menu, X, MessageCircle, Instagram, Facebook, Youtube } from 'lucide-react'
 import './App.css'
 
 // Import all images
@@ -713,20 +713,47 @@ function App() {
           </nav>
           
           <div className="flex justify-center space-x-6 mb-8">
-            <a href="https://api.whatsapp.com/send/?phone=32479293872&text&type=phone_number&app_absent=0" target="_blank" rel="noopener noreferrer">
-              <img src={whatsappIcon} alt="WhatsApp" className="h-6 opacity-70 hover:opacity-100 transition-opacity" />
+            <a 
+              href="https://api.whatsapp.com/send/?phone=32479293872&text&type=phone_number&app_absent=0" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all duration-300 hover:scale-110"
+            >
+              <MessageCircle className="w-5 h-5 text-white" />
             </a>
-            <a href="https://instagram.com/koendarras" target="_blank" rel="noopener noreferrer">
-              <img src={instaIcon} alt="Instagram" className="h-6 opacity-70 hover:opacity-100 transition-opacity" />
+            <a 
+              href="https://instagram.com/koendarras" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all duration-300 hover:scale-110"
+            >
+              <Instagram className="w-5 h-5 text-white" />
             </a>
-            <a href="https://facebook.com/koendarras.be" target="_blank" rel="noopener noreferrer">
-              <img src={fbIcon} alt="Facebook" className="h-6 opacity-70 hover:opacity-100 transition-opacity" />
+            <a 
+              href="https://facebook.com/koendarras.be" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all duration-300 hover:scale-110"
+            >
+              <Facebook className="w-5 h-5 text-white" />
             </a>
-            <a href="https://youtube.com/@darraskoen" target="_blank" rel="noopener noreferrer">
-              <img src={youtubeIcon} alt="YouTube" className="h-6 opacity-70 hover:opacity-100 transition-opacity" />
+            <a 
+              href="https://youtube.com/@darraskoen" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all duration-300 hover:scale-110"
+            >
+              <Youtube className="w-5 h-5 text-white" />
             </a>
-            <a href="https://tiktok.com/@koendarras" target="_blank" rel="noopener noreferrer">
-              <img src={tiktokIcon} alt="TikTok" className="h-6 opacity-70 hover:opacity-100 transition-opacity" />
+            <a 
+              href="https://tiktok.com/@koendarras" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="bg-white/10 hover:bg-white/20 p-3 rounded-full transition-all duration-300 hover:scale-110"
+            >
+              <div className="w-5 h-5 text-white flex items-center justify-center font-bold text-xs">
+                TT
+              </div>
             </a>
           </div>
           
