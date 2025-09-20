@@ -595,7 +595,14 @@ function App() {
       <section className="py-20 bg-gray-50">
         <div className="max-w-4xl mx-auto px-5 text-center">
           <div className="mb-8">
-            <img src={skyluxLogo} alt="Skylux" className="h-16 mx-auto" />
+            <a 
+              href="https://www.skylux.eu" 
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="inline-block hover:scale-105 transition-transform duration-300"
+            >
+              <img src={skyluxLogo} alt="Skylux" className="h-32 md:h-40 mx-auto" />
+            </a>
           </div>
           <p className="text-lg text-gray-700 mb-8">
             "Skylux, Hello Daylight: daylight as the beginning of every great adventure of Koen"
@@ -603,7 +610,15 @@ function App() {
           <p className="text-gray-600 mb-8 max-w-3xl mx-auto">
             Koen partners with leading brands that share his passion for adventure, innovation, and pushing limits. From aviation and travel to outdoor gear and technology, these partnerships enable extraordinary expeditions while delivering authentic brand exposure to global audiences.
           </p>
-          <p className="text-lg font-medium">Feel free to reach out!</p>
+          <Button 
+            onClick={() => scrollToSection('connect')}
+            className="bg-black text-white hover:bg-gray-800 transition-all duration-300 px-8 py-4 text-sm font-bold tracking-wider rounded-lg inline-flex items-center gap-2"
+          >
+            REACH OUT
+            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
+            </svg>
+          </Button>
         </div>
       </section>
 
