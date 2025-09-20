@@ -251,7 +251,7 @@ function App() {
               <img 
                 src={showreelImg} 
                 alt="Showreel" 
-                className="w-full max-w-2xl h-64 md:h-80 object-cover rounded-lg grayscale hover:grayscale-0 transition-all duration-300"
+                className="w-full max-w-4xl h-64 md:h-96 lg:h-[500px] object-cover rounded-lg grayscale hover:grayscale-0 transition-all duration-300"
                 onClick={() => window.open('https://youtu.be/kIPwJ6jtCdY', '_blank')}
               />
               <div className="absolute inset-0 flex items-center justify-center">
