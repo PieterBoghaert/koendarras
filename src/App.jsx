@@ -957,7 +957,6 @@ function App() {
           </div>
           
           <p className="text-sm text-gray-400 mb-2">© 2025 Koen Darras</p>
-          <p className="text-xs text-gray-500">Website design by WellSee Creative Lab</p>
         </div>
       </footer>
     </div>
