@@ -1,3 +1,7 @@
+/* Font Imports - Must be first */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -273,4 +277,117 @@ html {
 
 .mobile-menu-item {
   @apply text-2xl font-bold tracking-wider text-black hover:opacity-70 transition-opacity;
+}
+
+
+/* Streamlined Typography System */
+:root {
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-secondary: 'JetBrains Mono', 'SF Mono', Monaco, 'Cascadia Code', monospace;
+}
+
+/* Base Typography */
+body {
+  font-family: var(--font-primary);
+  font-weight: 400;
+  line-height: 1.6;
+  letter-spacing: -0.01em;
+}
+
+/* Typography Classes */
+.font-primary { font-family: var(--font-primary) !important; }
+.font-secondary { font-family: var(--font-secondary) !important; }
+
+/* Line Height Classes */
+.text-tight { 
+  line-height: 1.2 !important; 
+  letter-spacing: -0.02em !important; 
+}
+
+.text-normal { 
+  line-height: 1.5 !important; 
+  letter-spacing: -0.01em !important; 
+}
+
+.text-relaxed { 
+  line-height: 1.7 !important; 
+  letter-spacing: 0 !important; 
+}
+
+/* Mobile-Optimized Font Sizes */
+.text-hero {
+  font-size: clamp(2rem, 6vw, 4rem) !important;
+  font-weight: 900 !important;
+  line-height: 1.1 !important;
+  letter-spacing: -0.02em !important;
+}
+
+.text-section {
+  font-size: clamp(1.25rem, 4vw, 2rem) !important;
+  font-weight: 800 !important;
+  line-height: 1.2 !important;
+  letter-spacing: -0.01em !important;
+}
+
+.text-stat {
+  font-family: var(--font-secondary) !important;
+  font-size: clamp(1.5rem, 4vw, 2.25rem) !important;
+  font-weight: 700 !important;
+  line-height: 1.1 !important;
+  letter-spacing: 0 !important;
+}
+
+.text-label {
+  font-family: var(--font-secondary) !important;
+  font-size: clamp(0.625rem, 2vw, 0.75rem) !important;
+  font-weight: 600 !important;
+  line-height: 1.4 !important;
+  letter-spacing: 0.1em !important;
+  text-transform: uppercase !important;
+}
+
+.text-body {
+  font-size: clamp(0.875rem, 2.5vw, 1rem) !important;
+  font-weight: 400 !important;
+  line-height: 1.6 !important;
+  letter-spacing: 0 !important;
+}
+
+.text-body-lg {
+  font-size: clamp(1rem, 2.8vw, 1.125rem) !important;
+  font-weight: 400 !important;
+  line-height: 1.6 !important;
+  letter-spacing: 0 !important;
+}
+
+.text-nav {
+  font-size: clamp(0.75rem, 2vw, 0.875rem) !important;
+  font-weight: 600 !important;
+  line-height: 1.4 !important;
+  letter-spacing: 0.05em !important;
+  text-transform: uppercase !important;
+}
+
+.text-button {
+  font-size: clamp(0.75rem, 2vw, 0.875rem) !important;
+  font-weight: 700 !important;
+  line-height: 1.3 !important;
+  letter-spacing: 0.08em !important;
+  text-transform: uppercase !important;
+}
+
+/* Mobile-specific improvements */
+@media (max-width: 768px) {
+  .mobile-padding {
+    padding-left: 1rem !important;
+    padding-right: 1rem !important;
+  }
+  
+  .mobile-spacing {
+    margin-bottom: 2rem !important;
+  }
+  
+  .mobile-center {
+    text-align: center !important;
+  }
 }

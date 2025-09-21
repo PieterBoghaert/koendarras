@@ -2,6 +2,8 @@ import { useState, useEffect, useRef } from 'react'
 import { Button } from '@/components/ui/button.jsx'
 import { ChevronDown, Play, Menu, X, MessageCircle, Instagram, Facebook, Youtube } from 'lucide-react'
 import './App.css'
+import './hero-cta-styles.css'
+import { useTouchGestures } from './mobile-carousel.js'
 
 // Import all images
 import headerImg from './assets/Header.jpg'
@@ -79,6 +81,10 @@ const useInView = (threshold = 0.1) => {
 function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
+  const [currentMilestone, setCurrentMilestone] = useState(0)
+  
+  // Touch gestures for mobile carousel
+  const touchGestures = useTouchGestures(currentMilestone, setCurrentMilestone, 3)
   
   // Intersection observers for animations
   const [socialRef, socialInView] = useInView()
@@ -87,10 +93,10 @@ function App() {
   const [pressRef, pressInView] = useInView()
   
   // Counter animations
-  const instagramCount = useCountUp(8.89, 2000, socialInView)
-  const facebookCount = useCountUp(654.62, 2000, socialInView)
-  const youtubeCount = useCountUp(10.59, 2000, socialInView)
-  const tiktokCount = useCountUp(31.59, 2000, socialInView)
+  const instagramCount = useCountUp(20, 2000, socialInView)
+  const facebookCount = useCountUp(278, 2000, socialInView)
+  const youtubeCount = useCountUp(10, 2000, socialInView)
+  const tiktokCount = useCountUp(31, 2000, socialInView)
   
   const viewsCount = useCountUp(1.3, 2000, viralInView)
   const reachCount = useCountUp(902, 2000, viralInView)
@@ -116,6 +122,19 @@ function App() {
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
   }, [])
+
+  // Body lock for mobile menu
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.classList.add('menu-open')
+    } else {
+      document.body.classList.remove('menu-open')
+    }
+    
+    return () => {
+      document.body.classList.remove('menu-open')
+    }
+  }, [isMenuOpen])
   
   const scrollToSection = (sectionId) => {
     const element = document.getElementById(sectionId)
@@ -123,6 +142,16 @@ function App() {
       element.scrollIntoView({ behavior: 'smooth' })
     }
     setIsMenuOpen(false)
+  }
+  
+  const playShowreel = () => {
+    const thumbnail = document.getElementById('thumbnail')
+    const vimeoEmbed = document.getElementById('vimeo-embed')
+    
+    if (thumbnail && vimeoEmbed) {
+      thumbnail.style.display = 'none'
+      vimeoEmbed.style.display = 'block'
+    }
   }
   
   const handleFormSubmit = async (e) => {
@@ -157,9 +186,9 @@ function App() {
         isScrolled ? 'bg-white/95 backdrop-blur-sm shadow-sm' : 'bg-transparent'
       }`}>
         <div className="max-w-4xl mx-auto px-5 py-4 flex justify-between items-center">
-          <button 
+          <button
             onClick={() => scrollToSection('hero')}
-            className={`text-xl font-bold tracking-wider transition-colors duration-300 ${
+            className={`text-2xl md:text-3xl font-primary font-black tracking-wider transition-colors duration-300 ${
               isScrolled ? 'text-black' : 'text-white'
             }`}
           >
@@ -172,7 +201,7 @@ function App() {
               <button
                 key={item}
                 onClick={() => scrollToSection(item.toLowerCase())}
-                className={`text-sm font-medium tracking-wider hover:opacity-70 transition-all duration-300 ${
+                className={`text-nav font-primary hover:opacity-70 transition-all duration-300 ${
                   isScrolled ? 'text-black' : 'text-white'
                 }`}
               >
@@ -194,44 +223,71 @@ function App() {
         
         {/* Mobile Menu */}
         {isMenuOpen && (
-          <div className="md:hidden fixed inset-0 bg-white z-40 flex flex-col items-center justify-center space-y-8">
-            {['MISSION', 'ADVENTURES', 'SPEAKING', 'PRESS', 'CONNECT'].map((item) => (
-              <button
-                key={item}
-                onClick={() => scrollToSection(item.toLowerCase())}
-                className="text-2xl font-bold tracking-wider text-black hover:opacity-70 transition-opacity"
-              >
-                {item}
-              </button>
-            ))}
-          </div>
+          <>
+            <div className="md:hidden fixed inset-0 bg-black/50 z-40" onClick={() => setIsMenuOpen(false)}></div>
+            <div className="md:hidden fixed top-0 right-0 w-80 h-full bg-white z-50 overflow-y-auto">
+              <div className="sticky top-0 bg-white border-b border-gray-200 p-5 z-10">
+                <div className="flex justify-between items-center">
+                  <button
+                    onClick={() => {
+                      scrollToSection('hero')
+                      setIsMenuOpen(false)
+                    }}
+                    className="text-2xl font-primary font-black text-black"
+                  >
+                    KOEN DARRAS
+                  </button>
+                  <button
+                    onClick={() => setIsMenuOpen(false)}
+                    className="text-black"
+                  >
+                    <X size={24} />
+                  </button>
+                </div>
+              </div>
+              <div className="p-5 space-y-6">
+                {['MISSION', 'ADVENTURES', 'SPEAKING', 'PRESS', 'CONNECT'].map((item) => (
+                  <button
+                    key={item}
+                    onClick={() => {
+                      scrollToSection(item.toLowerCase())
+                      setIsMenuOpen(false)
+                    }}
+                    className="block w-full text-left py-3 text-xl font-primary font-bold text-black hover:text-gray-600 transition-colors min-h-[44px]"
+                  >
+                    {item}
+                  </button>
+                ))}
+              </div>
+            </div>
+          </>
         )}
       </header>
 
       {/* Hero Section */}
       <section id="hero" className="relative h-screen flex items-center justify-center text-center">
         <div 
-          className="absolute inset-0 bg-cover bg-center"
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
           style={{ backgroundImage: `url(${headerImg})` }}
         >
-          <div className="absolute inset-0 bg-white/20"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-black/40 via-black/30 to-black/50"></div>
         </div>
         <div className="relative z-10 max-w-4xl mx-auto px-5">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black tracking-wider text-white mb-6">
-            LIMITS ARE INVITATIONS
+          <h1 className="hero-title font-primary text-white mb-4 font-extrabold tracking-tight">
+            LIMITATIONS ARE INVITATIONS
           </h1>
-          <p className="text-xl md:text-2xl text-white mb-8 font-light tracking-wide">
-            Adventurer | Entrepreneur | Speaker
+          <p className="hero-subtitle font-primary text-white/80 mb-8 font-medium">
+            Keynote Speaker · Entrepreneur · Adventurer
           </p>
           <Button 
             onClick={() => scrollToSection('mission')}
-            className="bg-transparent border-2 border-white text-white hover:bg-white hover:text-black transition-all duration-300 px-8 py-3 text-sm font-bold tracking-wider rounded-lg"
+            className="cta-button"
           >
             DISCOVER MORE
           </Button>
           <div className="mt-8 flex flex-col items-center">
             <ChevronDown className="text-white animate-bounce" size={24} />
-            <span className="text-white text-sm mt-2 tracking-wider">SCROLL</span>
+            <span className="text-white text-label font-secondary">SCROLL</span>
           </div>
         </div>
       </section>
@@ -239,79 +295,104 @@ function App() {
       {/* Who Is Koen Section */}
       <section id="mission" className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-5 text-center">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-primary font-black mb-8 text-tight tracking-wider">WHO IS KOEN DARRAS</h2>
           <div className="max-w-3xl mx-auto mb-12">
-            <p className="text-lg md:text-xl leading-relaxed text-gray-800">
-              Darras is the first person in history to climb the ten highest mountains of South America and Africa in a row, and also conquered the iconic peaks Mont Blanc, Matterhorn and Eiger in just nine days to prove that limits are only invitations. From summiting Denali in Alaska to kitesurfing extreme crossings and riding huge continents, Koen turns raw adventure into cinematic storytelling.
+            <p className="text-body-lg font-primary text-gray-800 text-relaxed mb-6">
+              Darras is the first person in history to climb the ten highest mountains of South America and Africa in a row, and also conquered the iconic peaks Mont Blanc, Matterhorn and Eiger in just nine days to prove that limits are only invitations.
+            </p>
+            <p className="text-body-lg font-primary text-gray-800 text-relaxed">
+              From summiting Denali in Alaska to kitesurfing extreme crossings and riding huge continents, Koen turns raw adventure into cinematic storytelling. With multiple viral videos reaching millions of views, Koen inspires a global audience to chase dreams without limits and to discover the soul of the journey.
             </p>
           </div>
           
           {/* Showreel */}
           <div className="mb-12">
-            <div className="relative inline-block group cursor-pointer">
+            <div 
+              id="showreel-wrapper" 
+              className="relative w-full max-w-4xl mx-auto cursor-pointer"
+              onClick={() => playShowreel()}
+            >
+              {/* Thumbnail */}
               <img 
+                id="thumbnail"
                 src={showreelImg} 
-                alt="Showreel" 
-                className="w-full max-w-4xl h-64 md:h-96 lg:h-[500px] object-cover rounded-lg grayscale hover:grayscale-0 transition-all duration-300"
-                onClick={() => window.open('https://youtu.be/kIPwJ6jtCdY', '_blank')}
+                alt="Play Showreel" 
+                className="w-full block rounded-xl"
+                style={{display: 'block'}}
               />
-              <div className="absolute inset-0 flex items-center justify-center">
-                <div className="bg-black/50 rounded-full p-4 group-hover:bg-black/70 transition-all duration-300">
-                  <Play className="text-white" size={32} fill="white" />
-                </div>
+
+
+
+              {/* Hidden Vimeo embed */}
+              <div 
+                id="vimeo-embed" 
+                className="relative"
+                style={{padding: '56.25% 0 0 0', position: 'relative', display: 'none'}}
+              >
+                <iframe 
+                  src="https://player.vimeo.com/video/1120469511?autoplay=1&badge=0&autopause=0&player_id=0&app_id=58479" 
+                  frameBorder="0" 
+                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
+                  referrerPolicy="strict-origin-when-cross-origin" 
+                  className="absolute top-0 left-0 w-full h-full rounded-xl"
+                  title="Koen Darras Showreel 2025"
+                />
               </div>
             </div>
           </div>
           
-          <p className="text-lg text-gray-700 mb-12 max-w-2xl mx-auto">
+          <p className="text-body-lg font-primary text-gray-700 mb-12 max-w-2xl mx-auto text-relaxed">
             With multiple viral videos reaching millions of views, Koen inspires a global audience to chase dreams without limits and to discover the soul of the journey.
           </p>
           
           {/* Social Reach */}
           <div ref={socialRef} className="grid grid-cols-2 md:grid-cols-4 gap-8">
-            <div>
-              <div className="text-3xl md:text-4xl font-black text-black mb-2">
-                {instagramCount}.89M
+            <div className="flex items-center justify-center gap-3">
+              <Instagram className="w-6 h-6 text-gray-700" />
+              <div className="text-stat font-secondary text-black">
+                {instagramCount}.75K
               </div>
-              <div className="text-sm text-gray-600 tracking-wider">INSTAGRAM</div>
             </div>
-            <div>
-              <div className="text-3xl md:text-4xl font-black text-black mb-2">
-                {facebookCount}.62K
+            <div className="flex items-center justify-center gap-3">
+              <Facebook className="w-6 h-6 text-gray-700" />
+              <div className="text-stat font-secondary text-black">
+                {facebookCount}
               </div>
-              <div className="text-sm text-gray-600 tracking-wider">FACEBOOK</div>
             </div>
-            <div>
-              <div className="text-3xl md:text-4xl font-black text-black mb-2">
+            <div className="flex items-center justify-center gap-3">
+              <Youtube className="w-6 h-6 text-gray-700" />
+              <div className="text-stat font-secondary text-black">
                 {youtubeCount}.59K
               </div>
-              <div className="text-sm text-gray-600 tracking-wider">YOUTUBE</div>
             </div>
-            <div>
-              <div className="text-3xl md:text-4xl font-black text-black mb-2">
+            <div className="flex items-center justify-center gap-3">
+              <svg className="w-6 h-6 text-gray-700" viewBox="0 0 24 24" fill="currentColor">
+                <path d="M12.53.02C13.84 0 15.14.01 16.44 0c.08 1.53.63 3.09 1.75 4.17 1.12 1.11 2.7 1.62 4.24 1.79v4.03c-1.44-.05-2.89-.35-4.2-.97-.57-.26-1.1-.59-1.62-.93-.01 2.92.01 5.84-.02 8.75-.08 1.4-.54 2.79-1.35 3.94-1.31 1.92-3.58 3.17-5.91 3.21-1.43.08-2.86-.31-4.08-1.03-2.02-1.19-3.44-3.37-3.65-5.71-.02-.5-.03-1-.01-1.49.18-1.9 1.12-3.72 2.58-4.96 1.66-1.44 3.98-2.13 6.15-1.72.02 1.48-.04 2.96-.04 4.44-.99-.32-2.15-.23-3.02.37-.63.41-1.11 1.04-1.36 1.75-.21.51-.15 1.07-.14 1.61.24 1.64 1.82 3.02 3.5 2.87 1.12-.01 2.19-.66 2.77-1.61.19-.33.4-.67.41-1.06.1-1.79.06-3.57.07-5.36.01-4.03-.01-8.05.02-12.07z"/>
+              </svg>
+              <div className="text-stat font-secondary text-black">
                 {tiktokCount}.59K
               </div>
-              <div className="text-sm text-gray-600 tracking-wider">TIKTOK</div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Quote Block */}
-      <section className="py-16 bg-black text-white">
-        <div className="max-w-4xl mx-auto px-5 text-center">
-          <h2 className="text-2xl md:text-4xl font-black tracking-wider">
+          {/* Quote */}
+      <section className="py-20 bg-black text-white text-center">
+        <div className="max-w-4xl mx-auto px-5">
+          <blockquote className="text-section font-primary text-white mb-6 text-tight">
             "HE MADE THE IMPOSSIBLE FEEL POSSIBLE"
-          </h2>
-          <p className="text-lg mt-4 tracking-wider">— THE NORTH FACE</p>
+          </blockquote>
+          <cite className="text-label font-secondary text-white/80">— THE NORTH FACE</cite>
         </div>
-      </section>
+        </section>
 
       {/* Future Adventures */}
       <section id="adventures" className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-5 text-center">
-          <h2 className="text-3xl md:text-4xl font-black tracking-wider mb-4">FUTURE ADVENTURES</h2>
-          <p className="text-lg text-gray-700 mb-12 max-w-2xl mx-auto">
-            Koen's upcoming goals and expeditions.
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-primary font-black mb-8 text-tight tracking-wider">FUTURE ADVENTURES</h2>
+          <p className="text-body-lg font-primary text-gray-700 mb-12 max-w-3xl mx-auto text-relaxed">
+            Darras wants to see the world through the eyes of the mountains and the oceans, while crossing every continent. In the pipeline are many more adventures.
           </p>
           
           <div className="grid md:grid-cols-3 gap-8 mb-12">
@@ -325,7 +406,7 @@ function App() {
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
               </div>
               <h3 className="text-lg font-bold mt-4 tracking-wider">CLIMBING THE 7 SUMMITS</h3>
-              <p className="text-gray-600 text-sm">Everest, Himalaya…</p>
+              <p className="text-gray-600 text-sm">This means climbing the highest mountain of each continent. Everest, Himalaya…</p>
             </div>
             
             <div className="group">
@@ -338,7 +419,7 @@ function App() {
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
               </div>
               <h3 className="text-lg font-bold mt-4 tracking-wider">BIG NEW PROJECT</h3>
-              <p className="text-gray-600 text-sm">#worldfirst #neverdonebefore</p>
+              <p className="text-gray-600 text-sm">Revolutionary adventure combining multiple extreme disciplines. #worldfirst #neverdonebefore</p>
             </div>
             
             <div className="group">
@@ -351,19 +432,18 @@ function App() {
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
               </div>
               <h3 className="text-lg font-bold mt-4 tracking-wider">TRAVERSING CONTINENTS</h3>
-              <p className="text-gray-600 text-sm">Overland journeys</p>
+              <p className="text-gray-600 text-sm">Epic overland expeditions crossing entire continents by foot, bike, and adventure sports.</p>
             </div>
           </div>
           
-          <p className="text-lg text-gray-700 max-w-2xl mx-auto">
-            Darras wants to see the world through the eyes of the mountains and the oceans, while crossing every continent. In the pipeline are many more adventures.
-          </p>
+
         </div>
       </section>
 
       {/* Viral Impact */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-4xl mx-auto px-5 text-center">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-primary font-black mb-8 text-tight tracking-wider">VIRAL IMPACT AND AWARENESS</h2>
           <div className="mb-8">
             <img 
               src={cannondaleImg} 
@@ -404,7 +484,7 @@ function App() {
           
           <Button 
             onClick={() => scrollToSection('connect')}
-            className="bg-transparent border-2 border-black text-black hover:bg-black hover:text-white transition-all duration-300 px-8 py-3 text-sm font-bold tracking-wider rounded-lg"
+            className="cta-button"
           >
             BECOME A PARTNER
           </Button>
@@ -414,11 +494,13 @@ function App() {
       {/* Milestones */}
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-5 text-center">
-          <p className="text-lg text-gray-700 mb-12 max-w-2xl mx-auto">
-            For over 20 years, Darras has explored the world as an adventurer, entrepreneur, and storyteller…
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-primary font-black mb-8 text-tight tracking-wider">MILESTONES</h2>
+          <p className="text-body-lg font-primary text-gray-700 mb-12 max-w-3xl mx-auto text-relaxed">
+            For over 20 years, Darras has explored the world as an adventurous entrepreneur and storyteller, turning extreme expeditions into compelling narratives that inspire millions to push beyond their perceived limitations and discover what's truly possible.
           </p>
           
-          <div className="grid md:grid-cols-4 gap-8 mb-12">
+          {/* Desktop Grid */}
+          <div className="hidden md:grid md:grid-cols-4 gap-8 mb-12">
             <div className="group">
               <div className="relative overflow-hidden rounded-lg aspect-square mb-4">
                 <img 
@@ -429,7 +511,7 @@ function App() {
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
               </div>
               <h3 className="text-sm font-bold tracking-wider">DENALI ALASKA</h3>
-              <p className="text-xs text-gray-600">6,190m, First team on summit 2025, -30°</p>
+              <p className="text-xs text-gray-600">Conquered Denali (6,190m), the coldest mountain in the world and one of the Seven Summits, first team at the summit, -30°C.</p>
             </div>
             
             <div className="group">
@@ -442,7 +524,7 @@ function App() {
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
               </div>
               <h3 className="text-sm font-bold tracking-wider">PEAKS OF AFRICA</h3>
-              <p className="text-xs text-gray-600">45,000 km, 27 countries, 10 peaks</p>
+              <p className="text-xs text-gray-600">Epic 45,000 kilometer journey by road across 27 countries, conquering the 10 highest mountains in Africa in a row.</p>
             </div>
             
             <div className="group">
@@ -455,7 +537,7 @@ function App() {
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
               </div>
               <h3 className="text-sm font-bold tracking-wider">PEAKS OF SOUTH AMERICA</h3>
-              <p className="text-xs text-gray-600">10x 6,000m+ incl. Aconcagua</p>
+              <p className="text-xs text-gray-600">Conquered 10 mountains over 6,000 meters, including Aconcagua (6,962m) - one of the Seven Summits and the highest peak in Argentina.</p>
             </div>
             
             <div className="group">
@@ -468,42 +550,127 @@ function App() {
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
               </div>
               <h3 className="text-sm font-bold tracking-wider">ALPINE TRILOGY</h3>
-              <p className="text-xs text-gray-600">Mont Blanc, Matterhorn, Eiger</p>
+              <p className="text-xs text-gray-600">Climbing iconic mountains Mont Blanc, Matterhorn and Eiger in nine days.</p>
+            </div>
+          </div>
+
+          {/* Mobile Carousel */}
+          <div className="md:hidden mb-12">
+            <div className="relative overflow-hidden" {...touchGestures}>
+              <div 
+                className="flex transition-transform duration-300 ease-out"
+                style={{ transform: `translateX(-${currentMilestone * 100}%)` }}
+              >
+                {/* Denali Alaska */}
+                <div className="w-full flex-shrink-0 px-4">
+                  <div className="bg-white rounded-lg p-6 shadow-lg">
+                    <div className="relative overflow-hidden rounded-lg aspect-square mb-4">
+                      <img 
+                        src={denaliImg} 
+                        alt="Denali Alaska" 
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <h3 className="text-lg font-bold tracking-wider mb-3">DENALI ALASKA</h3>
+                    <p className="text-sm text-gray-600 leading-relaxed">Conquered Denali (6,190m), the coldest mountain in the world and one of the Seven Summits, first team at the summit, -30°C.</p>
+                  </div>
+                </div>
+
+                {/* Peaks of Africa */}
+                <div className="w-full flex-shrink-0 px-4">
+                  <div className="bg-white rounded-lg p-6 shadow-lg">
+                    <div className="relative overflow-hidden rounded-lg aspect-square mb-4">
+                      <img 
+                        src={peaksImg} 
+                        alt="Peaks of Africa" 
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <h3 className="text-lg font-bold tracking-wider mb-3">PEAKS OF AFRICA</h3>
+                    <p className="text-sm text-gray-600 leading-relaxed">Epic 45,000 kilometer journey by road across 27 countries, conquering the 10 highest mountains in Africa in a row.</p>
+                  </div>
+                </div>
+
+                {/* Peaks of South America */}
+                <div className="w-full flex-shrink-0 px-4">
+                  <div className="bg-white rounded-lg p-6 shadow-lg">
+                    <div className="relative overflow-hidden rounded-lg aspect-square mb-4">
+                      <img 
+                        src={americaImg} 
+                        alt="Peaks of South America" 
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <h3 className="text-lg font-bold tracking-wider mb-3">PEAKS OF SOUTH AMERICA</h3>
+                    <p className="text-sm text-gray-600 leading-relaxed">Conquered 10 mountains over 6,000 meters, including Aconcagua (6,962m) - one of the Seven Summits and the highest peak in Argentina.</p>
+                  </div>
+                </div>
+
+                {/* Alpine Trilogy */}
+                <div className="w-full flex-shrink-0 px-4">
+                  <div className="bg-white rounded-lg p-6 shadow-lg">
+                    <div className="relative overflow-hidden rounded-lg aspect-square mb-4">
+                      <img 
+                        src={ontopImg} 
+                        alt="Alpine Trilogy" 
+                        className="w-full h-full object-cover"
+                      />
+                    </div>
+                    <h3 className="text-lg font-bold tracking-wider mb-3">ALPINE TRILOGY</h3>
+                    <p className="text-sm text-gray-600 leading-relaxed">Climbing iconic mountains Mont Blanc, Matterhorn and Eiger in nine days.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* Pagination Dots */}
+            <div className="flex justify-center space-x-2 mt-6">
+              {[0, 1, 2, 3].map((index) => (
+                <button
+                  key={index}
+                  onClick={() => setCurrentMilestone(index)}
+                  className={`w-3 h-3 rounded-full transition-colors duration-200 ${
+                    currentMilestone === index ? 'bg-black' : 'bg-gray-300'
+                  }`}
+                  aria-label={`Go to milestone ${index + 1}`}
+                />
+              ))}
             </div>
           </div>
           
           <div ref={milestonesRef} className="grid grid-cols-2 md:grid-cols-5 gap-8">
-            <div>
+            <div className="text-center">
               <div className="text-3xl md:text-4xl font-black text-black mb-2">
-                {countriesCount}
+                102
               </div>
               <div className="text-sm text-gray-600 tracking-wider">COUNTRIES EXPLORED</div>
             </div>
-            <div>
+            <div className="text-center">
               <div className="text-3xl md:text-4xl font-black text-black mb-2">
-                {yearsCount}
+                2
               </div>
               <div className="text-sm text-gray-600 tracking-wider">YEARS WORLD TRIP</div>
+              <div className="text-xs text-gray-500">36,000 km, 20 countries</div>
             </div>
-            <div>
+            <div className="text-center">
               <div className="text-3xl md:text-4xl font-black text-black mb-2">
-                {Math.floor(kmCount / 1000)}K
+                1M+
               </div>
-              <div className="text-sm text-gray-600 tracking-wider">KM TRAVELED</div>
+              <div className="text-sm text-gray-600 tracking-wider">VIEWS FOR 3 VIDEOS</div>
             </div>
-            <div>
+            <div className="text-center">
               <div className="text-3xl md:text-4xl font-black text-black mb-2">
-                {daughtersCount}
+                3
               </div>
-              <div className="text-sm text-gray-600 tracking-wider">DAUGHTERS</div>
-              <div className="text-xs text-gray-500">(Nina, Lio, Ziggy)</div>
+              <div className="text-sm text-gray-600 tracking-wider">KIDS</div>
+              <div className="text-xs text-gray-500">Nina, Lio & Ziggy</div>
             </div>
-            <div>
+            <div className="text-center col-span-2 md:col-span-1">
               <div className="text-3xl md:text-4xl font-black text-black mb-2">
-                {travellersCount}K
+                60K
               </div>
               <div className="text-sm text-gray-600 tracking-wider">SATISFIED TRAVELLERS</div>
-              <div className="text-xs text-gray-500">(Travelbase)</div>
+              <div className="text-xs text-gray-500">Partner Travelbase</div>
             </div>
           </div>
         </div>
@@ -512,8 +679,9 @@ function App() {
       {/* Press & Media */}
       <section id="press" className="py-20 bg-gray-50">
         <div className="max-w-4xl mx-auto px-5 text-center">
-          <p className="text-lg text-gray-700 mb-12">
-            Koen's adventures featured by BBC, CNN, NYT, HLN, VRT, Nieuwsblad.
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-primary font-black mb-8 text-tight tracking-wider">PRESS AND MEDIA</h2>
+          <p className="text-body-lg font-primary text-gray-700 mb-12 max-w-3xl mx-auto text-relaxed">
+            Koen's extraordinary adventures have captured global attention, inspiring millions through international media coverage and viral content. Featured across major international outlets including BBC, CNN, The New York Times, and leading Belgian networks HLN, Het Laatste Nieuws, VRT NWS, Nieuwsblad, with coverage spanning Europe, America, and Africa.
           </p>
           
           <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-12">
@@ -525,10 +693,10 @@ function App() {
             <img src={hlnLogo} alt="HLN" className="h-12 object-contain mx-auto opacity-70 hover:opacity-100 transition-opacity" />
           </div>
           
-          <blockquote className="text-xl md:text-2xl font-bold text-black mb-8 max-w-3xl mx-auto">
+          <blockquote className="text-body-lg font-primary text-black mb-6 max-w-3xl mx-auto text-relaxed italic">
             "In 2024, after climbing the 10 highest peaks of Africa, the Alpine Trilogy, and the South American summits, my mission is clear: limits are invitations."
           </blockquote>
-          <cite className="text-sm text-gray-600 tracking-wider">— KOEN DARRAS</cite>
+          <cite className="text-label font-secondary text-gray-600">— KOEN DARRAS</cite>
           
           <div ref={pressRef} className="grid grid-cols-2 md:grid-cols-4 gap-8 mt-12">
             <div>
@@ -562,7 +730,7 @@ function App() {
       {/* Keynote Speaking */}
       <section id="speaking" className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-5 text-center">
-          <h2 className="text-3xl md:text-4xl font-black tracking-wider mb-8">KEYNOTE SPEAKING</h2>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-primary font-black mb-8 text-tight tracking-wider">KEYNOTE SPEAKING</h2>
           <p className="text-lg text-gray-700 mb-12 max-w-3xl mx-auto">
             Transform your team with lessons learned from the world's most extreme environments. He's ready to inspire your team/company to chase your dreams. Available for corporate events, conferences and leadership retreats worldwide.
           </p>
@@ -584,16 +752,17 @@ function App() {
           
           <Button 
             onClick={() => scrollToSection('connect')}
-            className="bg-transparent border-2 border-black text-black hover:bg-black hover:text-white transition-all duration-300 px-8 py-3 text-sm font-bold tracking-wider rounded-lg"
+            className="cta-button"
           >
             BOOK KOEN
           </Button>
         </div>
       </section>
 
-      {/* Supported By */}
+      {/* Partners */}
       <section className="py-20 bg-gray-50">
         <div className="max-w-4xl mx-auto px-5 text-center">
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-primary font-black mb-12 text-tight tracking-wider">PARTNERS</h2>
           <div className="mb-8">
             <a 
               href="https://www.skylux.eu" 
@@ -604,15 +773,16 @@ function App() {
               <img src={skyluxLogo} alt="Skylux" className="h-32 md:h-40 mx-auto" />
             </a>
           </div>
-          <p className="text-lg text-gray-700 mb-8">
+          <blockquote className="text-body-lg font-primary text-gray-700 mb-6 text-relaxed italic">
             "Skylux, Hello Daylight: daylight as the beginning of every great adventure of Koen"
-          </p>
-          <p className="text-gray-600 mb-8 max-w-3xl mx-auto">
+          </blockquote>
+          <cite className="text-label font-secondary text-gray-500 mb-8 block">— SKYLUX</cite>
+          <p className="text-body font-primary text-gray-600 mb-8 max-w-3xl mx-auto text-relaxed">
             Koen partners with leading brands that share his passion for adventure, innovation, and pushing limits. From aviation and travel to outdoor gear and technology, these partnerships enable extraordinary expeditions while delivering authentic brand exposure to global audiences.
           </p>
           <Button 
             onClick={() => scrollToSection('connect')}
-            className="bg-black text-white hover:bg-gray-800 transition-all duration-300 px-8 py-4 text-sm font-bold tracking-wider rounded-lg inline-flex items-center gap-2"
+            className="cta-button inline-flex items-center gap-2"
           >
             REACH OUT
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -625,7 +795,7 @@ function App() {
       {/* Connect */}
       <section id="connect" className="py-20 bg-white">
         <div className="max-w-2xl mx-auto px-5">
-          <h2 className="text-3xl md:text-4xl font-black tracking-wider mb-12 text-center">CONNECT</h2>
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-primary font-black mb-12 text-center text-tight tracking-wider">CONNECT</h2>
           
           <form onSubmit={handleFormSubmit} className="space-y-6">
             <div className="grid md:grid-cols-2 gap-6">
@@ -682,7 +852,7 @@ function App() {
             <div className="text-center">
               <Button 
                 type="submit"
-                className="bg-transparent border-2 border-black text-black hover:bg-black hover:text-white transition-all duration-300 px-8 py-3 text-sm font-bold tracking-wider rounded-lg"
+                className="cta-button"
               >
                 SEND MESSAGE
               </Button>
