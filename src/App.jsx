@@ -7,7 +7,7 @@ import { useTouchGestures } from './mobile-carousel.js'
 
 // Import all images
 import headerImg from './assets/Header.jpg'
-import showreelImg from './assets/showreel.jpg'
+import showreelImg from './assets/KoenDarrasthumbnail.jpg'
 import summitsImg from './assets/7summits.jpg'
 import kitsurfImg from './assets/Kitsurf.jpg'
 import continentsImg from './assets/Continents.jpg'
@@ -330,10 +330,12 @@ function App() {
                 style={{padding: '56.25% 0 0 0', position: 'relative', display: 'none'}}
               >
                 <iframe 
-                  src="https://player.vimeo.com/video/1120469511?autoplay=1&badge=0&autopause=0&player_id=0&app_id=58479" 
+                  src="https://player.vimeo.com/video/1120469511?h=share&title=0&byline=0&portrait=0&autoplay=1" 
+                  width="100%" 
+                  height="480" 
                   frameBorder="0" 
-                  allow="autoplay; fullscreen; picture-in-picture; clipboard-write; encrypted-media; web-share" 
-                  referrerPolicy="strict-origin-when-cross-origin" 
+                  allow="autoplay; fullscreen; picture-in-picture" 
+                  allowFullScreen
                   className="absolute top-0 left-0 w-full h-full rounded-xl"
                   title="Koen Darras Showreel 2025"
                 />
