@@ -4,6 +4,7 @@ import { ChevronDown, Play, Menu, X, MessageCircle, Instagram, Facebook, Youtube
 import './App.css'
 import './hero-cta-styles.css'
 import { useTouchGestures } from './mobile-carousel.js'
+import useLocalization from './hooks/useLocalization.js'
 
 // Import all images
 import headerImg from './assets/Header.jpg'
@@ -82,6 +83,9 @@ function App() {
   const [isMenuOpen, setIsMenuOpen] = useState(false)
   const [isScrolled, setIsScrolled] = useState(false)
   const [currentMilestone, setCurrentMilestone] = useState(0)
+  
+  // Localization hook
+  const { language, changeLanguage, t, loading } = useLocalization()
   
   // Touch gestures for mobile carousel
   const touchGestures = useTouchGestures(currentMilestone, setCurrentMilestone, 3)
@@ -277,17 +281,16 @@ function App() {
             LIMITATIONS ARE INVITATIONS
           </h1>
           <p className="hero-subtitle font-primary text-white/80 mb-8 font-medium">
-            Keynote Speaker · Entrepreneur · Adventurer
+            {t('hero.subtitle')}
           </p>
           <Button 
             onClick={() => scrollToSection('mission')}
             className="cta-button"
           >
-            DISCOVER MORE
-          </Button>
+            {t('ui.discover_more')}          </Button>
           <div className="mt-8 flex flex-col items-center">
             <ChevronDown className="text-white animate-bounce" size={24} />
-            <span className="text-white text-label font-secondary">SCROLL</span>
+            <span className="text-white text-label font-secondary">{t('ui.scroll')}</span>
           </div>
         </div>
       </section>
@@ -298,10 +301,10 @@ function App() {
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-primary font-black mb-8 text-tight tracking-wider">WHO IS KOEN DARRAS</h2>
           <div className="max-w-3xl mx-auto mb-12">
             <p className="text-body-lg font-primary text-gray-800 text-relaxed mb-6">
-              Darras is the first person in history to climb the ten highest mountains of South America and Africa in a row, and also conquered the iconic peaks Mont Blanc, Matterhorn and Eiger in just nine days to prove that limits are only invitations.
+              {t('about.description_1')}
             </p>
             <p className="text-body-lg font-primary text-gray-800 text-relaxed">
-              From summiting Denali in Alaska to kitesurfing extreme crossings and riding huge continents, Koen turns raw adventure into cinematic storytelling. With multiple viral videos reaching millions of views, Koen inspires a global audience to chase dreams without limits and to discover the soul of the journey.
+              {t('about.description_2')}
             </p>
           </div>
           
@@ -344,7 +347,7 @@ function App() {
           </div>
           
           <p className="text-body-lg font-primary text-gray-700 mb-12 max-w-2xl mx-auto text-relaxed">
-            With multiple viral videos reaching millions of views, Koen inspires a global audience to chase dreams without limits and to discover the soul of the journey.
+            {t('about.viral_description')}
           </p>
           
           {/* Social Reach */}
@@ -394,7 +397,7 @@ function App() {
         <div className="max-w-4xl mx-auto px-5 text-center">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-primary font-black mb-8 text-tight tracking-wider">FUTURE ADVENTURES</h2>
           <p className="text-body-lg font-primary text-gray-700 mb-12 max-w-3xl mx-auto text-relaxed">
-            Darras wants to see the world through the eyes of the mountains and the oceans, while crossing every continent. In the pipeline are many more adventures.
+            {t('adventures.description')}
           </p>
           
           <div className="grid md:grid-cols-3 gap-8 mb-12">
@@ -408,7 +411,7 @@ function App() {
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
               </div>
               <h3 className="text-lg font-bold mt-4 tracking-wider">CLIMBING THE 7 SUMMITS</h3>
-              <p className="text-gray-600 text-sm">This means climbing the highest mountain of each continent. Everest, Himalaya…</p>
+              <p className="text-gray-600 text-sm">{t('adventures.seven_summits.description')}</p>
             </div>
             
             <div className="group">
@@ -420,8 +423,8 @@ function App() {
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
               </div>
-              <h3 className="text-lg font-bold mt-4 tracking-wider">BIG NEW PROJECT</h3>
-              <p className="text-gray-600 text-sm">Revolutionary adventure combining multiple extreme disciplines. #worldfirst #neverdonebefore</p>
+              <h3 className="text-lg font-bold mt-4 tracking-wider">BIG PROJECT</h3>
+              <p className="text-gray-600 text-sm">{t('adventures.big_project.description')}</p>
             </div>
             
             <div className="group">
@@ -433,8 +436,8 @@ function App() {
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
               </div>
-              <h3 className="text-lg font-bold mt-4 tracking-wider">TRAVERSING CONTINENTS</h3>
-              <p className="text-gray-600 text-sm">Epic overland expeditions crossing entire continents by foot, bike, and adventure sports.</p>
+              <h3 className="text-lg font-bold mt-4 tracking-wider">CONTINENTS</h3>
+              <p className="text-gray-600 text-sm">{t('adventures.continents.description')}</p>
             </div>
           </div>
           
@@ -498,7 +501,7 @@ function App() {
         <div className="max-w-4xl mx-auto px-5 text-center">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-primary font-black mb-8 text-tight tracking-wider">MILESTONES</h2>
           <p className="text-body-lg font-primary text-gray-700 mb-12 max-w-3xl mx-auto text-relaxed">
-            For over 20 years, Darras has explored the world as an adventurous entrepreneur and storyteller, turning extreme expeditions into compelling narratives that inspire millions to push beyond their perceived limitations and discover what's truly possible.
+            {t('milestones.description')}
           </p>
           
           {/* Desktop Grid */}
@@ -513,7 +516,7 @@ function App() {
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
               </div>
               <h3 className="text-sm font-bold tracking-wider">DENALI ALASKA</h3>
-              <p className="text-xs text-gray-600">Conquered Denali (6,190m), the coldest mountain in the world and one of the Seven Summits, first team at the summit, -30°C.</p>
+              <p className="text-xs text-gray-600">{t('milestones.denali')}</p>
             </div>
             
             <div className="group">
@@ -526,7 +529,7 @@ function App() {
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
               </div>
               <h3 className="text-sm font-bold tracking-wider">PEAKS OF AFRICA</h3>
-              <p className="text-xs text-gray-600">Epic 45,000 kilometer journey by road across 27 countries, conquering the 10 highest mountains in Africa in a row.</p>
+              <p className="text-xs text-gray-600">{t('milestones.africa')}</p>
             </div>
             
             <div className="group">
@@ -539,7 +542,7 @@ function App() {
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
               </div>
               <h3 className="text-sm font-bold tracking-wider">PEAKS OF SOUTH AMERICA</h3>
-              <p className="text-xs text-gray-600">Conquered 10 mountains over 6,000 meters, including Aconcagua (6,962m) - one of the Seven Summits and the highest peak in Argentina.</p>
+              <p className="text-xs text-gray-600">{t('milestones.south_america')}</p>
             </div>
             
             <div className="group">
@@ -552,7 +555,7 @@ function App() {
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
               </div>
               <h3 className="text-sm font-bold tracking-wider">ALPINE TRILOGY</h3>
-              <p className="text-xs text-gray-600">Climbing iconic mountains Mont Blanc, Matterhorn and Eiger in nine days.</p>
+              <p className="text-xs text-gray-600">{t('milestones.alpine')}</p>
             </div>
           </div>
 
@@ -574,7 +577,7 @@ function App() {
                       />
                     </div>
                     <h3 className="text-lg font-bold tracking-wider mb-3">DENALI ALASKA</h3>
-                    <p className="text-sm text-gray-600 leading-relaxed">Conquered Denali (6,190m), the coldest mountain in the world and one of the Seven Summits, first team at the summit, -30°C.</p>
+                    <p className="text-sm text-gray-600 leading-relaxed">{t('milestones.denali')}</p>
                   </div>
                 </div>
 
@@ -589,7 +592,7 @@ function App() {
                       />
                     </div>
                     <h3 className="text-lg font-bold tracking-wider mb-3">PEAKS OF AFRICA</h3>
-                    <p className="text-sm text-gray-600 leading-relaxed">Epic 45,000 kilometer journey by road across 27 countries, conquering the 10 highest mountains in Africa in a row.</p>
+                    <p className="text-sm text-gray-600 leading-relaxed">{t('milestones.africa')}</p>
                   </div>
                 </div>
 
@@ -604,7 +607,7 @@ function App() {
                       />
                     </div>
                     <h3 className="text-lg font-bold tracking-wider mb-3">PEAKS OF SOUTH AMERICA</h3>
-                    <p className="text-sm text-gray-600 leading-relaxed">Conquered 10 mountains over 6,000 meters, including Aconcagua (6,962m) - one of the Seven Summits and the highest peak in Argentina.</p>
+                    <p className="text-sm text-gray-600 leading-relaxed">{t('milestones.south_america')}</p>
                   </div>
                 </div>
 
@@ -619,7 +622,7 @@ function App() {
                       />
                     </div>
                     <h3 className="text-lg font-bold tracking-wider mb-3">ALPINE TRILOGY</h3>
-                    <p className="text-sm text-gray-600 leading-relaxed">Climbing iconic mountains Mont Blanc, Matterhorn and Eiger in nine days.</p>
+                    <p className="text-sm text-gray-600 leading-relaxed">{t('milestones.alpine')}</p>
                   </div>
                 </div>
               </div>
@@ -683,7 +686,7 @@ function App() {
         <div className="max-w-4xl mx-auto px-5 text-center">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-primary font-black mb-8 text-tight tracking-wider">PRESS AND MEDIA</h2>
           <p className="text-body-lg font-primary text-gray-700 mb-12 max-w-3xl mx-auto text-relaxed">
-            Koen's extraordinary adventures have captured global attention, inspiring millions through international media coverage and viral content. Featured across major international outlets including BBC, CNN, The New York Times, and leading Belgian networks HLN, Het Laatste Nieuws, VRT NWS, Nieuwsblad, with coverage spanning Europe, America, and Africa.
+            {t('press.description')}
           </p>
           
           <div className="grid grid-cols-2 md:grid-cols-3 gap-8 mb-12">
@@ -734,21 +737,25 @@ function App() {
         <div className="max-w-4xl mx-auto px-5 text-center">
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-primary font-black mb-8 text-tight tracking-wider">KEYNOTE SPEAKING</h2>
           <p className="text-lg text-gray-700 mb-12 max-w-3xl mx-auto">
-            Transform your team with lessons learned from the world's most extreme environments. He's ready to inspire your team/company to chase your dreams. Available for corporate events, conferences and leadership retreats worldwide.
+            {t('keynote.description')}
           </p>
           
           <div className="grid md:grid-cols-4 gap-8 mb-12">
             <div className="p-6 border border-gray-200 rounded-lg hover:shadow-lg transition-shadow">
               <h3 className="text-lg font-bold tracking-wider">REDEFINING LIMITS</h3>
+              <p className="text-sm text-gray-600 mt-2">{t('keynote.themes.limits')}</p>
             </div>
             <div className="p-6 border border-gray-200 rounded-lg hover:shadow-lg transition-shadow">
               <h3 className="text-lg font-bold tracking-wider">LEADERSHIP UNDER PRESSURE</h3>
+              <p className="text-sm text-gray-600 mt-2">{t('keynote.themes.leadership')}</p>
             </div>
             <div className="p-6 border border-gray-200 rounded-lg hover:shadow-lg transition-shadow">
               <h3 className="text-lg font-bold tracking-wider">TEAM RESILIENCE</h3>
+              <p className="text-sm text-gray-600 mt-2">{t('keynote.themes.resilience')}</p>
             </div>
             <div className="p-6 border border-gray-200 rounded-lg hover:shadow-lg transition-shadow">
               <h3 className="text-lg font-bold tracking-wider">INNOVATION THROUGH ADVENTURE</h3>
+              <p className="text-sm text-gray-600 mt-2">{t('keynote.themes.innovation')}</p>
             </div>
           </div>
           
@@ -756,7 +763,7 @@ function App() {
             onClick={() => scrollToSection('connect')}
             className="cta-button"
           >
-            BOOK KOEN
+            {t('ui.book_koen')}
           </Button>
         </div>
       </section>
@@ -776,17 +783,17 @@ function App() {
             </a>
           </div>
           <blockquote className="text-body-lg font-primary text-gray-700 mb-6 text-relaxed italic">
-            "Skylux, Hello Daylight: daylight as the beginning of every great adventure of Koen"
+            "{t('quote.skylux')}"
           </blockquote>
           <cite className="text-label font-secondary text-gray-500 mb-8 block">— SKYLUX</cite>
           <p className="text-body font-primary text-gray-600 mb-8 max-w-3xl mx-auto text-relaxed">
-            Koen partners with leading brands that share his passion for adventure, innovation, and pushing limits. From aviation and travel to outdoor gear and technology, these partnerships enable extraordinary expeditions while delivering authentic brand exposure to global audiences.
+            {t('viral.description')}
           </p>
           <Button 
             onClick={() => scrollToSection('connect')}
             className="cta-button inline-flex items-center gap-2"
           >
-            REACH OUT
+            {t('ui.reach_out')}
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
@@ -804,14 +811,14 @@ function App() {
               <input
                 type="text"
                 name="name"
-                placeholder="Name"
+                placeholder={t('contact.form.name')}
                 required
                 className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:border-black transition-colors"
               />
               <input
                 type="text"
                 name="surname"
-                placeholder="Surname"
+                placeholder={t('contact.form.surname')}
                 required
                 className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:border-black transition-colors"
               />
@@ -820,7 +827,7 @@ function App() {
             <input
               type="email"
               name="email"
-              placeholder="Email"
+              placeholder={t('contact.form.email')}
               required
               className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:border-black transition-colors"
             />
@@ -828,7 +835,7 @@ function App() {
             <input
               type="tel"
               name="mobile"
-              placeholder="Mobile"
+              placeholder={t('contact.form.mobile')}
               className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:border-black transition-colors"
             />
             
@@ -837,16 +844,16 @@ function App() {
               required
               className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:border-black transition-colors"
             >
-              <option value="">Select inquiry type</option>
-              <option value="speaking">Speaking Inquiry</option>
-              <option value="partnership">Partnership</option>
-              <option value="media">Media Request</option>
-              <option value="general">General</option>
+              <option value="">{t('contact.form.inquiry_type')}</option>
+              <option value="speaking">{t('contact.form.inquiry_options.speaking')}</option>
+              <option value="partnership">{t('contact.form.inquiry_options.partnership')}</option>
+              <option value="media">{t('contact.form.inquiry_options.media')}</option>
+              <option value="general">{t('contact.form.inquiry_options.general')}</option>
             </select>
             
             <textarea
               name="note"
-              placeholder="Extra note"
+              placeholder={t('contact.form.note')}
               rows={4}
               className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:border-black transition-colors resize-none"
             ></textarea>
@@ -856,13 +863,13 @@ function App() {
                 type="submit"
                 className="cta-button"
               >
-                SEND MESSAGE
+                {t('contact.form.send')}
               </Button>
             </div>
           </form>
           
           <div className="text-center mt-8">
-            <p className="text-gray-600">or send a direct email:</p>
+            <p className="text-gray-600">{t('contact.direct_email')}</p>
             <a 
               href="mailto:info@koendarras.com" 
               className="text-black font-bold tracking-wider hover:opacity-70 transition-opacity"
@@ -953,9 +960,29 @@ function App() {
           </div>
           
           <div className="flex justify-center items-center space-x-4 mb-6">
-            <span className="text-2xl">🇧🇪</span>
+            <button
+              onClick={() => changeLanguage('nl')}
+              className={`flex items-center space-x-2 px-3 py-2 rounded-lg transition-all duration-300 ${
+                language === 'nl' 
+                  ? 'bg-white/20 text-white' 
+                  : 'text-gray-400 hover:text-white hover:bg-white/10'
+              }`}
+            >
+              <span className="text-xl">🇳🇱</span>
+              <span className="text-sm font-medium">NL</span>
+            </button>
             <span className="text-gray-400">|</span>
-            <span className="text-2xl">🇬🇧</span>
+            <button
+              onClick={() => changeLanguage('en')}
+              className={`flex items-center space-x-2 px-3 py-2 rounded-lg transition-all duration-300 ${
+                language === 'en' 
+                  ? 'bg-white/20 text-white' 
+                  : 'text-gray-400 hover:text-white hover:bg-white/10'
+              }`}
+            >
+              <span className="text-xl">🇬🇧</span>
+              <span className="text-sm font-medium">EN</span>
+            </button>
           </div>
           
           <p className="text-sm text-gray-400 mb-2">© 2025 Koen Darras</p>

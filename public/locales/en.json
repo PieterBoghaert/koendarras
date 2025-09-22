@@ -1,0 +1,85 @@
+{
+  "hero": {
+    "subtitle": "Keynote Speaker · Entrepreneur · Adventurer"
+  },
+  "about": {
+    "description_1": "Darras is the first person in history to climb the ten highest mountains of South America and Africa in a row, and also conquered the iconic peaks Mont Blanc, Matterhorn and Eiger in just nine days to prove that limits are only invitations.",
+    "description_2": "From summiting Denali in Alaska to kitesurfing extreme crossings and riding huge continents, Koen turns raw adventure into cinematic storytelling. With multiple viral videos reaching millions of views, Koen inspires a global audience to chase dreams without limits and to discover the soul of the journey.",
+    "viral_description": "With multiple viral videos reaching millions of views, Koen inspires a global audience to chase dreams without limits and to discover the soul of the journey."
+  },
+  "quote": {
+    "koen": "I believe that limits are only invitations to go beyond what we think is possible.",
+    "skylux": "Skylux, Hello Daylight: daylight as the beginning of every great adventure of Koen"
+  },
+  "adventures": {
+    "description": "Darras wants to see the world through the eyes of the mountains and the oceans, while crossing every continent. In the pipeline are many more adventures.",
+    "seven_summits": {
+      "description": "This means climbing the highest mountain of each continent."
+    },
+    "big_project": {
+      "description": "Revolutionary adventure combining multiple extreme disciplines."
+    },
+    "continents": {
+      "description": "Epic overland expeditions crossing entire continents by foot, bike, and adventure sports."
+    }
+  },
+  "milestones": {
+    "description": "For over 20 years, Darras has explored the world as an adventurous entrepreneur and storyteller, turning extreme expeditions into compelling narratives that inspire millions to push beyond their perceived limitations and discover what's truly possible.",
+    "denali": "Conquered Denali (6,190m), the coldest mountain in the world and one of the Seven Summits, first team at the summit, -30°C.",
+    "africa": "Epic 45,000 kilometer journey by road across 27 countries, conquering the 10 highest mountains in Africa in a row.",
+    "south_america": "Conquered 10 mountains over 6,000 meters, including Aconcagua (6,962m) - one of the Seven Summits and the highest peak in Argentina.",
+    "alpine": "Climbing iconic mountains Mont Blanc, Matterhorn and Eiger in nine days."
+  },
+  "stats": {
+    "countries": "Countries explored",
+    "world_trip": "Years world trip",
+    "world_trip_subtitle": "36,000 km, 20 countries",
+    "views": "Views for 3 videos",
+    "kids": "Kids (Nina, Lio & Ziggy)",
+    "travelers": "Satisfied travellers (Travelbase)",
+    "summits": "Summits climbed",
+    "continents": "Continents traversed"
+  },
+  "viral": {
+    "description": "Koen partners with leading brands that share his passion for adventure, innovation, and pushing limits. From aviation and travel to outdoor gear and technology, these partnerships enable extraordinary expeditions while delivering authentic brand exposure to global audiences."
+  },
+  "press": {
+    "description": "Koen's extraordinary adventures have captured global attention, inspiring millions through international media coverage and viral content. Featured across major international outlets including BBC, CNN, The New York Times, and leading Belgian networks HLN, Het Laatste Nieuws, VRT NWS, Nieuwsblad, with coverage spanning Europe, America, and Africa."
+  },
+  "keynote": {
+    "description": "Koen brings his unique perspective on overcoming limits to companies and organizations worldwide. His keynotes combine compelling adventure stories with practical insights on resilience, leadership, and embracing uncertainty.",
+    "themes": {
+      "limits": "Limits are invitations",
+      "resilience": "Building resilience through adversity",
+      "leadership": "Leadership in extreme conditions",
+      "innovation": "Innovation through embracing uncertainty"
+    }
+  },
+  "contact": {
+    "description": "Ready to push your limits? Let's talk about how we can create something extraordinary together.",
+    "form": {
+      "name": "Name",
+      "surname": "Surname",
+      "email": "Email",
+      "mobile": "Mobile",
+      "inquiry_type": "Inquiry Type",
+      "inquiry_options": {
+        "speaking": "Speaking Request",
+        "partnership": "Partnership",
+        "media": "Media Request",
+        "general": "General"
+      },
+      "note": "Additional Note",
+      "send": "SEND MESSAGE"
+    },
+    "direct_email": "or send a direct email:"
+  },
+  "ui": {
+    "scroll": "SCROLL",
+    "discover_more": "DISCOVER MORE",
+    "book_koen": "BOOK KOEN",
+    "become_partner": "BECOME A PARTNER",
+    "reach_out": "REACH OUT",
+    "play_showreel": "Play Showreel"
+  }
+}

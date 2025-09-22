@@ -1,0 +1,85 @@
+{
+  "hero": {
+    "subtitle": "Keynote Speaker · Ondernemer · Avonturier"
+  },
+  "about": {
+    "description_1": "Darras is de eerste persoon in de geschiedenis die de tien hoogste bergen van Zuid-Amerika en Afrika op rij heeft beklommen, en veroverde ook de iconische toppen Mont Blanc, Matterhorn en Eiger in slechts negen dagen om te bewijzen dat grenzen slechts uitnodigingen zijn.",
+    "description_2": "Van het beklimmen van Denali in Alaska tot extreme kitesurfoversteken en het doorkruisen van hele continenten, Koen zet rauwe avonturen om in cinematografische verhalen. Met meerdere virale video's die miljoenen views bereiken, inspireert Koen een wereldwijd publiek om dromen na te jagen zonder grenzen en de ziel van de reis te ontdekken.",
+    "viral_description": "Met meerdere virale video's die miljoenen views bereiken, inspireert Koen een wereldwijd publiek om dromen na te jagen zonder grenzen en de ziel van de reis te ontdekken."
+  },
+  "quote": {
+    "koen": "Ik geloof dat grenzen slechts uitnodigingen zijn om verder te gaan dan wat we denken dat mogelijk is.",
+    "skylux": "Skylux, Hello Daylight: daglicht als het begin van elk groot avontuur van Koen"
+  },
+  "adventures": {
+    "description": "Darras wil de wereld zien door de ogen van de bergen en de oceanen, terwijl hij elk continent doorkruist. Er staan nog veel meer avonturen in de planning.",
+    "seven_summits": {
+      "description": "Dit betekent het beklimmen van de hoogste berg van elk continent."
+    },
+    "big_project": {
+      "description": "Revolutionair avontuur dat meerdere extreme disciplines combineert."
+    },
+    "continents": {
+      "description": "Epische overlandexpedities die hele continenten doorkruisen te voet, per fiets en met avontuursport."
+    }
+  },
+  "milestones": {
+    "description": "Al meer dan 20 jaar verkent Darras de wereld als een avontuurlijke ondernemer en verteller, waarbij hij extreme expedities omzet in meeslepende verhalen die miljoenen inspireren om verder te gaan dan hun vermeende grenzen en te ontdekken wat werkelijk mogelijk is.",
+    "denali": "Veroverde Denali (6.190m), de koudste berg ter wereld en een van de Seven Summits, eerste team op de top, -30°C.",
+    "africa": "Epische reis van 45.000 kilometer over de weg door 27 landen, waarbij de 10 hoogste bergen van Afrika op rij werden veroverd.",
+    "south_america": "Veroverde 10 bergen boven de 6.000 meter, waaronder Aconcagua (6.962m) - een van de Seven Summits en de hoogste piek van Argentinië.",
+    "alpine": "Het beklimmen van iconische bergen Mont Blanc, Matterhorn en Eiger in negen dagen."
+  },
+  "stats": {
+    "countries": "Verkende landen",
+    "world_trip": "Jaar wereldreis",
+    "world_trip_subtitle": "36.000 km, 20 landen",
+    "views": "Views voor 3 video's",
+    "kids": "Kinderen (Nina, Lio & Ziggy)",
+    "travelers": "Tevreden reizigers (Travelbase)",
+    "summits": "Toppen beklommen",
+    "continents": "Continenten doorkruist"
+  },
+  "viral": {
+    "description": "Koen werkt samen met toonaangevende merken die zijn passie voor avontuur, innovatie en het verleggen van grenzen delen. Van luchtvaart en reizen tot outdoor uitrusting en technologie, deze partnerschappen maken buitengewone expedities mogelijk terwijl ze authentieke merkexposure leveren aan wereldwijde doelgroepen."
+  },
+  "press": {
+    "description": "Koens buitengewone avonturen hebben wereldwijde aandacht getrokken en inspireren miljoenen door internationale mediaberichtgeving en virale content. Uitgelicht in grote internationale media waaronder BBC, CNN, The New York Times, en toonaangevende Belgische netwerken HLN, Het Laatste Nieuws, VRT NWS, Nieuwsblad, met berichtgeving die Europa, Amerika en Afrika beslaat."
+  },
+  "keynote": {
+    "description": "Koen brengt zijn unieke perspectief op het overwinnen van grenzen naar bedrijven en organisaties wereldwijd. Zijn keynotes combineren meeslepende avonturenverhalen met praktische inzichten over veerkracht, leiderschap en het omarmen van onzekerheid.",
+    "themes": {
+      "limits": "Grenzen zijn uitnodigingen",
+      "resilience": "Veerkracht opbouwen door tegenspoed",
+      "leadership": "Leiderschap in extreme omstandigheden",
+      "innovation": "Innovatie door onzekerheid omarmen"
+    }
+  },
+  "contact": {
+    "description": "Klaar om je grenzen te verleggen? Laten we praten over hoe we samen iets buitengewoons kunnen creëren.",
+    "form": {
+      "name": "Naam",
+      "surname": "Achternaam", 
+      "email": "E-mail",
+      "mobile": "Mobiel",
+      "inquiry_type": "Type aanvraag",
+      "inquiry_options": {
+        "speaking": "Speaking Aanvraag",
+        "partnership": "Partnerschap",
+        "media": "Media Verzoek",
+        "general": "Algemeen"
+      },
+      "note": "Extra notitie",
+      "send": "BERICHT VERSTUREN"
+    },
+    "direct_email": "of stuur een directe e-mail:"
+  },
+  "ui": {
+    "scroll": "SCROLLEN",
+    "discover_more": "ONTDEK MEER",
+    "book_koen": "BOEK KOEN",
+    "become_partner": "WORD PARTNER",
+    "reach_out": "NEEM CONTACT OP",
+    "play_showreel": "Bekijk Showreel"
+  }
+}
