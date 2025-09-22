@@ -159,28 +159,49 @@ function App() {
     }
   }
   
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitMessage, setSubmitMessage] = useState('')
+  const [submitError, setSubmitError] = useState('')
+
   const handleFormSubmit = async (e) => {
     e.preventDefault()
+    setIsSubmitting(true)
+    setSubmitMessage('')
+    setSubmitError('')
+    
     const formData = new FormData(e.target)
     const data = Object.fromEntries(formData)
     
     try {
-      const response = await fetch('https://www.koendarras.com/api/contact', {
+      // Use production API endpoint (will be configured during deployment)
+      const response = await fetch('/api/contact', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          name: data.name,
+          surname: data.surname,
+          email: data.email,
+          mobile: data.mobile,
+          inquiryType: data.inquiry_type,
+          note: data.note
+        }),
       })
       
-      if (response.ok) {
-        alert('Message sent successfully!')
+      const result = await response.json()
+      
+      if (response.ok && result.success) {
+        setSubmitMessage(result.message || 'Message sent successfully! We\'ll get back to you soon.')
         e.target.reset()
       } else {
-        throw new Error('Failed to send message')
+        throw new Error(result.message || 'Failed to send message')
       }
     } catch (error) {
-      alert('Failed to send message. Please email directly to info@koendarras.com')
+      console.error('Form submission error:', error)
+      setSubmitError(error.message || 'Failed to send message. Please try again or email us directly at info@koendarras.com')
+    } finally {
+      setIsSubmitting(false)
     }
   }
 
@@ -279,7 +300,7 @@ function App() {
         </div>
         <div className="relative z-10 max-w-4xl mx-auto px-5">
           <h1 className="hero-title font-primary text-white mb-4 font-extrabold tracking-tight">
-            LIMITATIONS ARE INVITATIONS
+            {t('hero.tagline')}
           </h1>
           <p className="hero-subtitle font-primary text-white/80 mb-8 font-medium">
             {t('hero.subtitle')}
@@ -824,15 +845,40 @@ function App() {
               name="note"
               placeholder={t('contact.form.note')}
               rows={4}
+              required
               className="w-full p-4 border border-gray-300 rounded-lg focus:outline-none focus:border-black transition-colors resize-none"
             ></textarea>
+            
+            {/* Honeypot field for spam protection (hidden) */}
+            <input
+              type="text"
+              name="honeypot"
+              style={{ display: 'none' }}
+              tabIndex="-1"
+              autoComplete="off"
+            />
+            
+            {/* Success Message */}
+            {submitMessage && (
+              <div className="p-4 bg-green-50 border border-green-200 rounded-lg text-green-800">
+                {submitMessage}
+              </div>
+            )}
+            
+            {/* Error Message */}
+            {submitError && (
+              <div className="p-4 bg-red-50 border border-red-200 rounded-lg text-red-800">
+                {submitError}
+              </div>
+            )}
             
             <div className="text-center">
               <Button 
                 type="submit"
-                className="cta-button"
+                disabled={isSubmitting}
+                className={`cta-button ${isSubmitting ? 'opacity-50 cursor-not-allowed' : ''}`}
               >
-                {t('contact.form.send')}
+                {isSubmitting ? 'Sending...' : t('contact.form.send')}
               </Button>
             </div>
           </form>
