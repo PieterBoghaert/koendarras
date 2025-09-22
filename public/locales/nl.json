@@ -1,6 +1,7 @@
 {
   "hero": {
-    "subtitle": "Keynote Speaker · Ondernemer · Avonturier"
+    "subtitle": "Keynote Speaker · Ondernemer · Avonturier",
+    "tagline": "LIMITS ARE INVITATIONS"
   },
   "about": {
     "description_1": "Darras is de eerste persoon in de geschiedenis die de tien hoogste bergen van Zuid-Amerika en Afrika op rij heeft beklommen, en veroverde ook de iconische toppen Mont Blanc, Matterhorn en Eiger in slechts negen dagen om te bewijzen dat grenzen slechts uitnodigingen zijn.",
@@ -8,8 +9,7 @@
     "viral_description": "Met meerdere virale video's die miljoenen views bereiken, inspireert Koen een wereldwijd publiek om dromen na te jagen zonder grenzen en de ziel van de reis te ontdekken."
   },
   "quote": {
-    "koen": "Ik geloof dat grenzen slechts uitnodigingen zijn om verder te gaan dan wat we denken dat mogelijk is.",
-    "skylux": "Skylux, Hello Daylight: daglicht als het begin van elk groot avontuur van Koen"
+    "koen": "Ik geloof dat grenzen slechts uitnodigingen zijn om verder te gaan dan wat we denken dat mogelijk is."
   },
   "adventures": {
     "description": "Darras wil de wereld zien door de ogen van de bergen en de oceanen, terwijl hij elk continent doorkruist. Er staan nog veel meer avonturen in de planning.",
@@ -41,7 +41,7 @@
     "continents": "Continenten doorkruist"
   },
   "viral": {
-    "description": "Koen werkt samen met toonaangevende merken die zijn passie voor avontuur, innovatie en het verleggen van grenzen delen. Van luchtvaart en reizen tot outdoor uitrusting en technologie, deze partnerschappen maken buitengewone expedities mogelijk terwijl ze authentieke merkexposure leveren aan wereldwijde doelgroepen."
+    "description": "Skylux, maker van natuurlijke daglichtoplossingen, ondersteunt met trots alle reizen van Darras. Hun visie \"Hello Daylight\" weerspiegelt perfect zijn missie: elke zonsopgang markeert een nieuwe uitdaging, elke straal daglicht een bron van inspiratie die hem begeleidt van bergtoppen naar open oceanen."
   },
   "press": {
     "description": "Koens buitengewone avonturen hebben wereldwijde aandacht getrokken en inspireren miljoenen door internationale mediaberichtgeving en virale content. Uitgelicht in grote internationale media waaronder BBC, CNN, The New York Times, en toonaangevende Belgische netwerken HLN, Het Laatste Nieuws, VRT NWS, Nieuwsblad, met berichtgeving die Europa, Amerika en Afrika beslaat."
@@ -74,12 +74,18 @@
     },
     "direct_email": "of stuur een directe e-mail:"
   },
+  "footer": {
+    "design_credit": "Website design by",
+    "design_link_text": "WellSee Creative Lab",
+    "design_link_url": "https://www.wellsee.be",
+    "email": "info@koendarras.com"
+  },
   "ui": {
     "scroll": "SCROLLEN",
     "discover_more": "ONTDEK MEER",
     "book_koen": "BOEK KOEN",
     "become_partner": "WORD PARTNER",
-    "reach_out": "NEEM CONTACT OP",
+    "reach_out": "WORD PARTNER",
     "play_showreel": "Bekijk Showreel"
   }
 }

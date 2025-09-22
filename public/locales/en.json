@@ -1,6 +1,7 @@
 {
   "hero": {
-    "subtitle": "Keynote Speaker · Entrepreneur · Adventurer"
+    "subtitle": "Keynote Speaker · Entrepreneur · Adventurer",
+    "tagline": "LIMITS ARE INVITATIONS"
   },
   "about": {
     "description_1": "Darras is the first person in history to climb the ten highest mountains of South America and Africa in a row, and also conquered the iconic peaks Mont Blanc, Matterhorn and Eiger in just nine days to prove that limits are only invitations.",
@@ -8,8 +9,7 @@
     "viral_description": "With multiple viral videos reaching millions of views, Koen inspires a global audience to chase dreams without limits and to discover the soul of the journey."
   },
   "quote": {
-    "koen": "I believe that limits are only invitations to go beyond what we think is possible.",
-    "skylux": "Skylux, Hello Daylight: daylight as the beginning of every great adventure of Koen"
+    "koen": "I believe that limits are only invitations to go beyond what we think is possible."
   },
   "adventures": {
     "description": "Darras wants to see the world through the eyes of the mountains and the oceans, while crossing every continent. In the pipeline are many more adventures.",
@@ -41,7 +41,7 @@
     "continents": "Continents traversed"
   },
   "viral": {
-    "description": "Koen partners with leading brands that share his passion for adventure, innovation, and pushing limits. From aviation and travel to outdoor gear and technology, these partnerships enable extraordinary expeditions while delivering authentic brand exposure to global audiences."
+    "description": "Skylux, creator of natural daylight solutions, proudly powers all of Darras' journeys. Their vision \"Hello Daylight\" perfectly mirrors his mission: every sunrise marks a new challenge, every ray of daylight a source of inspiration guiding him from mountain peaks to open oceans."
   },
   "press": {
     "description": "Koen's extraordinary adventures have captured global attention, inspiring millions through international media coverage and viral content. Featured across major international outlets including BBC, CNN, The New York Times, and leading Belgian networks HLN, Het Laatste Nieuws, VRT NWS, Nieuwsblad, with coverage spanning Europe, America, and Africa."
@@ -74,12 +74,18 @@
     },
     "direct_email": "or send a direct email:"
   },
+  "footer": {
+    "design_credit": "Website design by",
+    "design_link_text": "WellSee Creative Lab",
+    "design_link_url": "https://www.wellsee.be",
+    "email": "info@koendarras.com"
+  },
   "ui": {
     "scroll": "SCROLL",
     "discover_more": "DISCOVER MORE",
     "book_koen": "BOOK KOEN",
     "become_partner": "BECOME A PARTNER",
-    "reach_out": "REACH OUT",
+    "reach_out": "BECOME A PARTNER",
     "play_showreel": "Play Showreel"
   }
 }

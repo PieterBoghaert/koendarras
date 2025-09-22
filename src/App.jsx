@@ -5,6 +5,7 @@ import './App.css'
 import './hero-cta-styles.css'
 import { useTouchGestures } from './mobile-carousel.js'
 import useLocalization from './hooks/useLocalization.js'
+import ResponsiveShowreel from './components/ResponsiveShowreel.jsx'
 
 // Import all images
 import headerImg from './assets/Header.jpg'
@@ -308,42 +309,13 @@ function App() {
             </p>
           </div>
           
-          {/* Showreel */}
+          {/* Responsive Showreel */}
           <div className="mb-12">
-            <div 
-              id="showreel-wrapper" 
-              className="relative w-full max-w-4xl mx-auto cursor-pointer"
-              onClick={() => playShowreel()}
-            >
-              {/* Thumbnail */}
-              <img 
-                id="thumbnail"
-                src={showreelImg} 
-                alt="Play Showreel" 
-                className="w-full block rounded-xl"
-                style={{display: 'block'}}
-              />
-
-
-
-              {/* Hidden Vimeo embed */}
-              <div 
-                id="vimeo-embed" 
-                className="relative"
-                style={{padding: '56.25% 0 0 0', position: 'relative', display: 'none'}}
-              >
-                <iframe 
-                  src="https://player.vimeo.com/video/1120469511?h=share&title=0&byline=0&portrait=0&autoplay=1" 
-                  width="100%" 
-                  height="480" 
-                  frameBorder="0" 
-                  allow="autoplay; fullscreen; picture-in-picture" 
-                  allowFullScreen
-                  className="absolute top-0 left-0 w-full h-full rounded-xl"
-                  title="Koen Darras Showreel 2025"
-                />
-              </div>
-            </div>
+            <ResponsiveShowreel 
+              desktopVideoId="1120469511"  // 16:9 ratio video for desktop
+              mobileVideoId="1120949925"   // 9:16 ratio video for mobile
+              className="max-w-4xl mx-auto"
+            />
           </div>
           
           <p className="text-body-lg font-primary text-gray-700 mb-12 max-w-2xl mx-auto text-relaxed">
@@ -782,10 +754,7 @@ function App() {
               <img src={skyluxLogo} alt="Skylux" className="h-32 md:h-40 mx-auto" />
             </a>
           </div>
-          <blockquote className="text-body-lg font-primary text-gray-700 mb-6 text-relaxed italic">
-            "{t('quote.skylux')}"
-          </blockquote>
-          <cite className="text-label font-secondary text-gray-500 mb-8 block">— SKYLUX</cite>
+
           <p className="text-body font-primary text-gray-600 mb-8 max-w-3xl mx-auto text-relaxed">
             {t('viral.description')}
           </p>
@@ -793,7 +762,7 @@ function App() {
             onClick={() => scrollToSection('connect')}
             className="cta-button inline-flex items-center gap-2"
           >
-            {t('ui.reach_out')}
+            {t('ui.become_partner')}
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
             </svg>
@@ -986,6 +955,17 @@ function App() {
           </div>
           
           <p className="text-sm text-gray-400 mb-2">© 2025 Koen Darras</p>
+          <p className="text-sm text-gray-400">
+            {t('footer.design_credit')}{' '}
+            <a 
+              href={t('footer.design_link_url')}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-white hover:text-blue-400 transition-colors duration-200"
+            >
+              {t('footer.design_link_text')}
+            </a>
+          </p>
         </div>
       </footer>
     </div>
