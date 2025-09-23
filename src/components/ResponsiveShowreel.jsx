@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 
 const ResponsiveShowreel = ({ 
-  desktopVideoId = "1120949925", // Default desktop video ID
+  desktopVideoId = "1120469511", // Desktop video ID (16:9 ratio)
   mobileVideoId = "1120949925",  // Mobile video ID (9:16 ratio)
   className = ""
 }) => {
@@ -42,12 +42,23 @@ const ResponsiveShowreel = ({
         {!isPlaying ? (
           // Thumbnail with play button overlay
           <div className="relative w-full h-full group cursor-pointer" onClick={handlePlay}>
-            {/* Vimeo thumbnail - using Vimeo's thumbnail API */}
+            {/* Vimeo thumbnail with multiple fallback options */}
             <img
-              src={`https://vumbnail.com/${currentVideoId}.jpg`}
+              src={`https://i.vimeocdn.com/video/${currentVideoId}_1280x720.jpg`}
               alt="Showreel thumbnail"
               className="w-full h-full object-cover"
               loading="lazy"
+              onError={(e) => {
+                // Fallback to different Vimeo thumbnail sizes if main fails
+                if (e.target.src.includes('_1280x720')) {
+                  e.target.src = `https://i.vimeocdn.com/video/${currentVideoId}_640x360.jpg`;
+                } else if (e.target.src.includes('_640x360')) {
+                  e.target.src = `https://vumbnail.com/${currentVideoId}.jpg`;
+                } else {
+                  // Final fallback to a poster image
+                  e.target.src = '/showreel-poster.jpg';
+                }
+              }}
             />
             
             {/* Play button overlay */}

@@ -13,9 +13,9 @@ const useLocalization = () => {
     const saved = localStorage.getItem('language')
     if (saved) return saved
     
-    // Check browser language, default to Dutch for Netherlands
-    const browserLang = navigator.language.toLowerCase()
-    return browserLang.startsWith('nl') ? 'nl' : 'en'
+    // FORCE ENGLISH AS DEFAULT - No browser language detection
+    // Always default to English regardless of browser language
+    return 'en'
   })
   
   const [translations, setTranslations] = useState({})
