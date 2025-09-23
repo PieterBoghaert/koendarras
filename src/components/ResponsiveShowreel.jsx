@@ -7,6 +7,7 @@ const ResponsiveShowreel = ({
 }) => {
   const [isMobile, setIsMobile] = useState(false);
   const [isPlaying, setIsPlaying] = useState(false);
+  const [imageLoaded, setImageLoaded] = useState(false);
 
   // Detect screen size and update mobile state
   useEffect(() => {
@@ -24,8 +25,9 @@ const ResponsiveShowreel = ({
     return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
 
-  // Get the appropriate video ID based on screen size
+  // Get the appropriate video ID and thumbnail based on screen size
   const currentVideoId = isMobile ? mobileVideoId : desktopVideoId;
+  const thumbnailSrc = isMobile ? '/koen-mobile-thumbnail.png' : '/koen-desktop-thumbnail.png';
 
   // Handle play button click
   const handlePlay = () => {
@@ -42,24 +44,26 @@ const ResponsiveShowreel = ({
         {!isPlaying ? (
           // Thumbnail with play button overlay
           <div className="relative w-full h-full group cursor-pointer" onClick={handlePlay}>
-            {/* Vimeo thumbnail with multiple fallback options */}
+            {/* High-quality thumbnail images */}
             <img
-              src={`https://i.vimeocdn.com/video/${currentVideoId}_1280x720.jpg`}
-              alt="Showreel thumbnail"
+              src={thumbnailSrc}
+              alt="Koen Darras Showreel Thumbnail"
               className="w-full h-full object-cover"
               loading="lazy"
+              onLoad={() => setImageLoaded(true)}
               onError={(e) => {
-                // Fallback to different Vimeo thumbnail sizes if main fails
-                if (e.target.src.includes('_1280x720')) {
-                  e.target.src = `https://i.vimeocdn.com/video/${currentVideoId}_640x360.jpg`;
-                } else if (e.target.src.includes('_640x360')) {
-                  e.target.src = `https://vumbnail.com/${currentVideoId}.jpg`;
-                } else {
-                  // Final fallback to a poster image
-                  e.target.src = '/showreel-poster.jpg';
-                }
+                console.error('Thumbnail failed to load:', e.target.src);
+                // Fallback to a solid color background
+                e.target.style.display = 'none';
               }}
             />
+            
+            {/* Loading state */}
+            {!imageLoaded && (
+              <div className="absolute inset-0 bg-gray-800 flex items-center justify-center">
+                <div className="text-white text-sm">Loading...</div>
+              </div>
+            )}
             
             {/* Play button overlay */}
             <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30 group-hover:bg-opacity-20 transition-all duration-300">
