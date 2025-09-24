@@ -12,7 +12,8 @@ const ResponsiveShowreel = ({
   // Detect screen size and update mobile state
   useEffect(() => {
     const checkScreenSize = () => {
-      setIsMobile(window.innerWidth < 768); // Tailwind md breakpoint
+      const mq = window.matchMedia('(max-width: 767px)'); // Tailwind md breakpoint
+      setIsMobile(mq.matches);
     };
 
     // Check on mount
