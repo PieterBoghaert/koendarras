@@ -48,7 +48,7 @@ const ResponsiveShowreel = ({
             <img
               src={thumbnailSrc}
               alt="Koen Darras Showreel Thumbnail"
-              className="w-full h-full object-cover"
+              className="w-full h-full object-cover relative z-10"
               loading="lazy"
               onLoad={() => setImageLoaded(true)}
               onError={(e) => {
