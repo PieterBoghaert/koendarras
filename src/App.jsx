@@ -30,6 +30,7 @@ import fbIcon from './assets/fb.png'
 import youtubeIcon from './assets/youtube.png'
 import tiktokIcon from './assets/tiktok.png'
 import whatsappIcon from './assets/whatsapp.png'
+import MailerLiteForm from './components/MailerLiteForm'
 
 // Counter animation hook
 const useCountUp = (end, duration = 2000, shouldStart = false) => {
@@ -385,6 +386,8 @@ function App() {
         </div>
         </section>
 
+      
+
       {/* Future Adventures */}
       <section id="adventures" className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-5 text-center">
@@ -433,10 +436,10 @@ function App() {
               <p className="text-gray-600 text-sm">{t('adventures.continents.description')}</p>
             </div>
           </div>
-          
-
         </div>
       </section>
+
+     
 
       {/* Viral Impact */}
       <section className="py-20 bg-gray-50">
@@ -673,6 +676,11 @@ function App() {
           </div>
         </div>
       </section>
+
+       {/* MailerliteForm */}
+
+
+      <MailerLiteForm />
 
       {/* Press & Media */}
       <section id="press" className="py-20 bg-gray-50">
