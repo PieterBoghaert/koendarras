@@ -8,8 +8,8 @@ import useLocalization from './hooks/useLocalization.js'
 import ResponsiveShowreel from './components/ResponsiveShowreel.jsx'
 
 // Import all images
-import headerImg from './assets/Header.jpg'
-import showreelImg from './assets/KoenDarrasthumbnail.jpg'
+import headerImg from '/Koenmountains.jpg'
+import showreelImg from '/vimeothumbkoen.png'
 import summitsImg from './assets/7summits.jpg'
 import kitsurfImg from './assets/Kitsurf.jpg'
 import continentsImg from './assets/Continents.jpg'
@@ -31,6 +31,7 @@ import youtubeIcon from './assets/youtube.png'
 import tiktokIcon from './assets/tiktok.png'
 import whatsappIcon from './assets/whatsapp.png'
 import MailerLiteForm from './components/MailerLiteForm'
+import bannerkoen from '/bannerkoen.jpg'
 
 // Counter animation hook
 const useCountUp = (end, duration = 2000, shouldStart = false) => {
@@ -200,7 +201,7 @@ function App() {
       }
     } catch (error) {
       console.error('Form submission error:', error)
-      setSubmitError(error.message || 'Failed to send message. Please try again or email us directly at info@koendarras.com')
+      setSubmitError(error.message || 'Failed to send message. Please try again or email us directly at connect@koendarras.com')
     } finally {
       setIsSubmitting(false)
     }
@@ -377,7 +378,7 @@ function App() {
       </section>
 
           {/* Quote */}
-      <section className="py-20 bg-black text-white text-center">
+      <section className="py-20 text-white text-center bg-cover bg-center" style={{ backgroundImage: `url(${bannerkoen})` }}>
         <div className="max-w-4xl mx-auto px-5">
           <blockquote className="text-section font-primary text-white mb-6 text-tight">
             "HE MADE THE IMPOSSIBLE FEEL POSSIBLE"
@@ -419,9 +420,7 @@ function App() {
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
               </div>
-              <h3 className="text-lg font-bold mt-4 tracking-wider">BIG PROJECT</h3>
-              <p className="text-gray-600 text-sm">{t('adventures.big_project.description')}</p>
-            </div>
+              <h3 className="text-lg font-bold mt-4 tracking-wider">CROSSING OCEANS</h3>
             
             <div className="group">
               <div className="relative overflow-hidden rounded-lg aspect-square">
@@ -432,7 +431,7 @@ function App() {
                 />
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
               </div>
-              <h3 className="text-lg font-bold mt-4 tracking-wider">CONTINENTS</h3>
+              <h3 className="text-lg font-bold mt-4 tracking-wider">EXPLORING CONTINENTS</h3>
               <p className="text-gray-600 text-sm">{t('adventures.continents.description')}</p>
             </div>
           </div>
@@ -764,8 +763,15 @@ function App() {
             onClick={() => scrollToSection('connect')}
             className="cta-button"
           >
-            {t('ui.book_koen')}
+            {t(\'ui.book_koen\')}
           </Button>
+
+          <div className="mt-12 text-left space-y-4">
+            <p className="text-body-lg font-primary text-gray-700">{t(\'keynote.supporting_text_1\')}</p>
+            <p className="text-body-lg font-primary text-gray-700">{t(\'keynote.supporting_text_2\')}</p>
+            <p className="text-body-lg font-primary text-gray-700">{t(\'keynote.supporting_text_3\')}</p>
+            <p className="text-body-lg font-primary text-gray-700">{t(\'keynote.supporting_text_4\')}</p>
+          </div>
         </div>
       </section>
 
@@ -894,7 +900,7 @@ function App() {
           <div className="text-center mt-8">
             <p className="text-gray-600">{t('contact.direct_email')}</p>
             <a 
-              href="mailto:info@koendarras.com" 
+              href="mailto:connect@koendarras.com" 
               className="text-black font-bold tracking-wider hover:opacity-70 transition-opacity"
               target="_blank"
               rel="noopener noreferrer"
@@ -991,7 +997,7 @@ function App() {
                   : 'text-gray-400 hover:text-white hover:bg-white/10'
               }`}
             >
-              <span className="text-xl">🇳🇱</span>
+              <span className="text-xl">🇧🇪</span>
               <span className="text-sm font-medium">NL</span>
             </button>
             <span className="text-gray-400">|</span>

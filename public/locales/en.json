@@ -5,8 +5,8 @@
   },
   "about": {
     "description_1": "Darras is the first person in history to climb the ten highest mountains of South America and Africa in a row, and also conquered the iconic peaks Mont Blanc, Matterhorn and Eiger in just nine days to prove that limits are only invitations.",
-    "description_2": "From summiting Denali in Alaska to kitesurfing extreme crossings and riding huge continents, Koen turns raw adventure into cinematic storytelling. With multiple viral videos reaching millions of views, Koen inspires a global audience to chase dreams without limits and to discover the soul of the journey.",
-    "viral_description": "With multiple viral videos reaching millions of views, Koen inspires a global audience to chase dreams without limits and to discover the soul of the journey."
+    "description_2": "From summiting Denali in Alaska to kitesurfing extreme crossings and riding huge continents, Koen turns raw adventure into cinematic storytelling.",
+    "viral_description": ""
   },
   "quote": {
     "koen": "I believe that limits are only invitations to go beyond what we think is possible."
@@ -14,10 +14,10 @@
   "adventures": {
     "description": "Darras wants to see the world through the eyes of the mountains and the oceans, while crossing every continent. In the pipeline are many more adventures.",
     "seven_summits": {
-      "description": "This means climbing the highest mountain of each continent."
+      "description": "Climbing the highest mountain of each continent."
     },
     "big_project": {
-      "description": "Revolutionary adventure combining multiple extreme disciplines."
+      "description": "Driven by passion and carried by the wind like sailing and kitesurfing."
     },
     "continents": {
       "description": "Epic overland expeditions crossing entire continents by foot, bike, and adventure sports."
@@ -49,11 +49,15 @@
   "keynote": {
     "description": "Koen brings his unique perspective on overcoming limits to companies and organizations worldwide. His keynotes combine compelling adventure stories with practical insights on resilience, leadership, and embracing uncertainty.",
     "themes": {
-      "limits": "Limits are invitations",
-      "resilience": "Building resilience through adversity",
-      "leadership": "Leadership in extreme conditions",
-      "innovation": "Innovation through embracing uncertainty"
-    }
+      "limits": "REDEFINING LIMITS",
+      "resilience": "TEAM RESILIENCE",
+      "leadership": "LEADERSHIP UNDER PRESSURE",
+      "innovation": "INNOVATION THROUGH ADVENTURE"
+    },
+    "supporting_text_1": "LIMITS ARE INVITATIONS: Koen's master keynote speaking to reach the impossible.",
+    "supporting_text_2": "THE POWER OF VISION: A clear, step-by-step guide to life-changing insights.",
+    "supporting_text_3": "THE ADVENTURE OF LEADERSHIP: From strategy to the summit in a company.",
+    "supporting_text_4": "HOW TO BUILD AN EXTRAORDINARY LIFE: A signature masterclass in creating and sustaining an extraordinary life."
   },
   "contact": {
     "description": "Ready to push your limits? Let's talk about how we can create something extraordinary together.",
@@ -78,7 +82,7 @@
     "design_credit": "Website design by",
     "design_link_text": "WellSee Creative Lab",
     "design_link_url": "https://www.wellsee.be",
-    "email": "info@koendarras.com"
+    "email": "connect@koendarras.com"
   },
   "ui": {
     "scroll": "SCROLL",
