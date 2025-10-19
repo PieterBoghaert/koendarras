@@ -49,11 +49,15 @@
   "keynote": {
     "description": "Koen brengt zijn unieke perspectief op het overwinnen van grenzen naar bedrijven en organisaties wereldwijd. Zijn keynotes combineren meeslepende avonturenverhalen met praktische inzichten over veerkracht, leiderschap en het omarmen van onzekerheid.",
     "themes": {
-      "limits": "Grenzen zijn uitnodigingen",
-      "resilience": "Veerkracht opbouwen door tegenspoed",
-      "leadership": "Leiderschap in extreme omstandigheden",
-      "innovation": "Innovatie door onzekerheid omarmen"
-    }
+      "limits": "GRENZEN HERDEFINIËREN",
+      "resilience": "VEERKRACHT IN TEAMS",
+      "leadership": "LEIDERSCHAP ONDER DRUK",
+      "innovation": "INNOVATIE DOOR AVONTUUR"
+    },
+    "supporting_text_1": "Koens masterkeynote om het onmogelijke te bereiken.",
+    "supporting_text_2": "Een duidelijke, stapsgewijze gids naar levensveranderende inzichten.",
+    "supporting_text_3": "Van strategie naar de top binnen een organisatie.",
+    "supporting_text_4": "Een kenmerkende masterclass in het creëren en behouden van een buitengewoon leven."
   },
   "contact": {
     "description": "Klaar om je grenzen te verleggen? Laten we praten over hoe we samen iets buitengewoons kunnen creëren.",
