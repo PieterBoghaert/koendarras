@@ -9,7 +9,6 @@ import ResponsiveShowreel from './components/ResponsiveShowreel.jsx'
 
 // Import all images
 import headerImg from '/Koenmountains.jpg'
-import showreelImg from '/vimeothumbkoen.png'
 import summitsImg from './assets/7summits.jpg'
 import kitsurfImg from './assets/Kitsurf.jpg'
 import continentsImg from './assets/Continents.jpg'
@@ -25,11 +24,7 @@ import vrtLogo from './assets/vrt.png'
 import nieuwsbladLogo from './assets/nieuwsblad.png'
 import hlnLogo from './assets/hln.png'
 import skyluxLogo from './assets/skylux.png'
-import instaIcon from './assets/insta.png'
-import fbIcon from './assets/fb.png'
-import youtubeIcon from './assets/youtube.png'
-import tiktokIcon from './assets/tiktok.png'
-import whatsappIcon from './assets/whatsapp.png'
+
 import MailerLiteForm from './components/MailerLiteForm'
 import bannerkoen from '/bannerkoen.jpg'
 
@@ -342,7 +337,7 @@ function App() {
           </div>
           
           <p className="text-body-lg font-primary text-gray-700 mb-12 max-w-2xl mx-auto text-relaxed">
-            {t('about.viral_description')}
+             {t('about.viral_description')}
           </p>
           
           {/* Social Reach */}
@@ -421,7 +416,8 @@ function App() {
                 <div className="absolute inset-0 bg-black/0 group-hover:bg-black/20 transition-all duration-300"></div>
               </div>
               <h3 className="text-lg font-bold mt-4 tracking-wider">CROSSING OCEANS</h3>
-            
+              <p className="text-gray-600 text-sm">{t('adventures.big_project.description')}</p>
+            </div>
             <div className="group">
               <div className="relative overflow-hidden rounded-lg aspect-square">
                 <img 
@@ -742,20 +738,20 @@ function App() {
           
           <div className="grid md:grid-cols-4 gap-8 mb-12">
             <div className="p-6 border border-gray-200 rounded-lg hover:shadow-lg transition-shadow">
-              <h3 className="text-lg font-bold tracking-wider">REDEFINING LIMITS</h3>
-              <p className="text-sm text-gray-600 mt-2">{t('keynote.themes.limits')}</p>
+              <h3 className="text-base font-bold tracking-wider">LIMITS ARE INVITATIONS</h3>
+              <p className="text-sm text-gray-600 mt-2">{t('keynote.supporting_text_1')}</p>
             </div>
             <div className="p-6 border border-gray-200 rounded-lg hover:shadow-lg transition-shadow">
-              <h3 className="text-lg font-bold tracking-wider">LEADERSHIP UNDER PRESSURE</h3>
-              <p className="text-sm text-gray-600 mt-2">{t('keynote.themes.leadership')}</p>
+              <h3 className="text-base font-bold tracking-wider">THE POWER OF VISION</h3>
+              <p className="text-sm text-gray-600 mt-2">{t('keynote.supporting_text_2')}</p>
             </div>
             <div className="p-6 border border-gray-200 rounded-lg hover:shadow-lg transition-shadow">
-              <h3 className="text-lg font-bold tracking-wider">TEAM RESILIENCE</h3>
-              <p className="text-sm text-gray-600 mt-2">{t('keynote.themes.resilience')}</p>
+              <h3 className="text-base font-bold tracking-wider">ADVENTURE OF LEADERSHIP</h3>
+              <p className="text-sm text-gray-600 mt-2">{t('keynote.supporting_text_3')}</p>
             </div>
             <div className="p-6 border border-gray-200 rounded-lg hover:shadow-lg transition-shadow">
-              <h3 className="text-lg font-bold tracking-wider">INNOVATION THROUGH ADVENTURE</h3>
-              <p className="text-sm text-gray-600 mt-2">{t('keynote.themes.innovation')}</p>
+              <h3 className="text-base font-bold tracking-wider">EXTRAORDINARY LIFE</h3>
+              <p className="text-sm text-gray-600 mt-2">{t('keynote.supporting_text_4')}</p>
             </div>
           </div>
           
@@ -763,15 +759,15 @@ function App() {
             onClick={() => scrollToSection('connect')}
             className="cta-button"
           >
-            {t(\'ui.book_koen\')}
+            {t('ui.book_koen')}
           </Button>
 
-          <div className="mt-12 text-left space-y-4">
-            <p className="text-body-lg font-primary text-gray-700">{t(\'keynote.supporting_text_1\')}</p>
-            <p className="text-body-lg font-primary text-gray-700">{t(\'keynote.supporting_text_2\')}</p>
-            <p className="text-body-lg font-primary text-gray-700">{t(\'keynote.supporting_text_3\')}</p>
-            <p className="text-body-lg font-primary text-gray-700">{t(\'keynote.supporting_text_4\')}</p>
-          </div>
+          {/* <div className="mt-12 text-left space-y-4">
+            <p className="text-body-lg font-primary text-gray-700">{t('keynote.supporting_text_1')}</p>
+            <p className="text-body-lg font-primary text-gray-700">{t('keynote.supporting_text_2')}</p>
+            <p className="text-body-lg font-primary text-gray-700">{t('keynote.supporting_text_3')}</p>
+            <p className="text-body-lg font-primary text-gray-700">{t('keynote.supporting_text_4')}</p>
+          </div> */}
         </div>
       </section>
 
@@ -905,7 +901,7 @@ function App() {
               target="_blank"
               rel="noopener noreferrer"
             >
-              INFO@KOENDARRAS.COM
+              CONNECT@KOENDARRAS.COM
             </a>
           </div>
         </div>

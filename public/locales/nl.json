@@ -17,10 +17,10 @@
       "description": "Dit betekent het beklimmen van de hoogste berg van elk continent."
     },
     "big_project": {
-      "description": "Revolutionair avontuur dat meerdere extreme disciplines combineert."
+      "description": "Gedreven door passie en gedragen door de wind, zoals bij zeilen en kitesurfen"
     },
     "continents": {
-      "description": "Epische overlandexpedities die hele continenten doorkruisen te voet, per fiets en met avontuursport."
+      "description": "Epische overlandexpedities die hele continenten doorkruisen te voet, per fiets en met 4x4."
     }
   },
   "milestones": {
@@ -59,7 +59,7 @@
     "description": "Klaar om je grenzen te verleggen? Laten we praten over hoe we samen iets buitengewoons kunnen creëren.",
     "form": {
       "name": "Naam",
-      "surname": "Achternaam", 
+      "surname": "Achternaam",
       "email": "E-mail",
       "mobile": "Mobiel",
       "inquiry_type": "Type aanvraag",

@@ -28,7 +28,7 @@ const ResponsiveShowreel = ({
 
   // Get the appropriate video ID and thumbnail based on screen size
   const currentVideoId = isMobile ? mobileVideoId : desktopVideoId;
-  const thumbnailSrc = isMobile ? '/koen-mobile-thumbnail.png' : '/koen-desktop-thumbnail.png';
+  const thumbnailSrc = isMobile ? '/vimeothumbkoen-mobile.jpg' : '/vimeothumbkoen.jpg';
 
   // Handle play button click
   const handlePlay = () => {
