@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react';
 
-const ResponsiveShowreel = ({ 
+const ResponsiveShowreel = ({
   desktopVideoId = "1120469511", // Desktop video ID (16:9 ratio)
   mobileVideoId = "1120949925",  // Mobile video ID (9:16 ratio)
+  thumbnailUrl = null,
   className = ""
 }) => {
   const [isMobile, setIsMobile] = useState(false);
@@ -28,7 +29,8 @@ const ResponsiveShowreel = ({
 
   // Get the appropriate video ID and thumbnail based on screen size
   const currentVideoId = isMobile ? mobileVideoId : desktopVideoId;
-  const thumbnailSrc = isMobile ? '/vimeothumbkoen-mobile.jpg' : '/vimeothumbkoen.jpg';
+  const defaultThumbnailSrc = isMobile ? '/vimeothumbkoen-mobile.jpg' : '/vimeothumbkoen.jpg';
+  const thumbnailSrc = thumbnailUrl || defaultThumbnailSrc;
 
   // Handle play button click
   const handlePlay = () => {
@@ -58,14 +60,14 @@ const ResponsiveShowreel = ({
                 e.target.style.display = 'none';
               }}
             />
-            
+
             {/* Loading state */}
             {!imageLoaded && (
               <div className="absolute inset-0 bg-gray-800 flex items-center justify-center">
                 <div className="text-white text-sm">Loading...</div>
               </div>
             )}
-            
+
             {/* Play button overlay */}
             <div className="absolute inset-0 flex items-center justify-center bg-black bg-opacity-30 group-hover:bg-opacity-20 transition-all duration-300">
               <div className="
@@ -78,12 +80,12 @@ const ResponsiveShowreel = ({
                 transition-all duration-300 
                 shadow-lg
               ">
-                <svg 
-                  className="w-6 h-6 md:w-8 md:h-8 text-black ml-1" 
-                  fill="currentColor" 
+                <svg
+                  className="w-6 h-6 md:w-8 md:h-8 text-black ml-1"
+                  fill="currentColor"
                   viewBox="0 0 24 24"
                 >
-                  <path d="M8 5v14l11-7z"/>
+                  <path d="M8 5v14l11-7z" />
                 </svg>
               </div>
             </div>
@@ -109,8 +111,8 @@ const ResponsiveShowreel = ({
       {/* Debug info (remove in production) */}
       {process.env.NODE_ENV === 'development' && (
         <div className="mt-2 text-xs text-gray-500">
-          Current mode: {isMobile ? 'Mobile (9:16)' : 'Desktop (16:9)'} | 
-          Video ID: {currentVideoId} | 
+          Current mode: {isMobile ? 'Mobile (9:16)' : 'Desktop (16:9)'} |
+          Video ID: {currentVideoId} |
           Screen width: {typeof window !== 'undefined' ? window.innerWidth : 'SSR'}px
         </div>
       )}
