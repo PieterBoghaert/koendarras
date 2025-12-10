@@ -3,6 +3,8 @@ import React, { useState, useEffect } from 'react';
 const ResponsiveShowreel = ({
   desktopVideoId = "1120469511", // Desktop video ID (16:9 ratio)
   mobileVideoId = "1120949925",  // Mobile video ID (9:16 ratio)
+  desktopThumbnailUrl = null,
+  mobileThumbnailUrl = null,
   thumbnailUrl = null,
   className = ""
 }) => {
@@ -27,10 +29,13 @@ const ResponsiveShowreel = ({
     return () => window.removeEventListener('resize', checkScreenSize);
   }, []);
 
-  // Get the appropriate video ID and thumbnail based on screen size
+  // Get the appropriate video ID based on screen size
   const currentVideoId = isMobile ? mobileVideoId : desktopVideoId;
-  const defaultThumbnailSrc = isMobile ? '/vimeothumbkoen-mobile.jpg' : '/vimeothumbkoen.jpg';
-  const thumbnailSrc = thumbnailUrl || defaultThumbnailSrc;
+
+  // Determine thumbnail sources utilizing the new props or falling back to defaults
+  // If a unified thumbnailUrl is provided (legacy behavior), use it for both unless specifics are given
+  const desktopSrc = desktopThumbnailUrl || thumbnailUrl || '/vimeothumbkoen.jpg';
+  const mobileSrc = mobileThumbnailUrl || thumbnailUrl || '/vimeothumbkoen-mobile.jpg';
 
   // Handle play button click
   const handlePlay = () => {
@@ -47,19 +52,23 @@ const ResponsiveShowreel = ({
         {!isPlaying ? (
           // Thumbnail with play button overlay
           <div className="relative w-full h-full group cursor-pointer" onClick={handlePlay}>
-            {/* High-quality thumbnail images */}
-            <img
-              src={thumbnailSrc}
-              alt="Koen Darras Showreel Thumbnail"
-              className="w-full h-full object-cover relative z-10"
-              loading="lazy"
-              onLoad={() => setImageLoaded(true)}
-              onError={(e) => {
-                console.error('Thumbnail failed to load:', e.target.src);
-                // Fallback to a solid color background
-                e.target.style.display = 'none';
-              }}
-            />
+            {/* High-quality thumbnail images with responsive switching */}
+            <picture>
+              <source media="(max-width: 767px)" srcSet={mobileSrc} />
+              <source media="(min-width: 768px)" srcSet={desktopSrc} />
+              <img
+                src={desktopSrc}
+                alt="Koen Darras Showreel Thumbnail"
+                className="w-full h-full object-cover relative z-10"
+                loading="lazy"
+                onLoad={() => setImageLoaded(true)}
+                onError={(e) => {
+                  console.error('Thumbnail failed to load:', e.target.src);
+                  // Fallback to a solid color background
+                  e.target.style.display = 'none';
+                }}
+              />
+            </picture>
 
             {/* Loading state */}
             {!imageLoaded && (

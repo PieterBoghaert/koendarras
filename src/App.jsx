@@ -317,8 +317,7 @@ function App() {
         </div>
       </section>
 
-      {/* Parallax Quote Section */}
-      {/* <ParallaxSection /> */}
+
 
       {/* Who Is Koen Section */}
       <section id="mission" className="py-20 bg-white">
@@ -339,7 +338,8 @@ function App() {
             <ResponsiveShowreel
               desktopVideoId="1144825585"
               mobileVideoId="1144825585"
-              thumbnailUrl="/who-is-koen.jpg"
+              desktopThumbnailUrl="/who-is-koen-16-9.jpg"
+              mobileThumbnailUrl="/who-is-koen-9-16.jpg"
               className="max-w-4xl mx-auto"
             />
           </div>
@@ -380,17 +380,8 @@ function App() {
         </div>
       </section>
 
-      {/* Quote */}
-      <section className="py-20 text-white text-center bg-cover bg-center" style={{ backgroundImage: `url(${bannerkoen})` }}>
-        <div className="max-w-4xl mx-auto px-5">
-          <blockquote className="text-section font-primary text-white mb-6 text-tight">
-            "HE MADE THE IMPOSSIBLE FEEL POSSIBLE"
-          </blockquote>
-          <cite className="text-label font-secondary text-white/80">— THE NORTH FACE</cite>
-        </div>
-      </section>
-
-
+      {/* Parallax Quote Section */}
+      <ParallaxSection />
 
       {/* Future Adventures */}
       <section id="adventures" className="py-20 bg-white">
