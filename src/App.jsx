@@ -26,7 +26,6 @@ import hlnLogo from './assets/hln.png'
 
 
 import MailerLiteForm from './components/MailerLiteForm'
-import bannerkoen from '/bannerkoen.jpg'
 
 import ParallaxSection from './components/ParallaxSection.jsx'
 
@@ -337,7 +336,7 @@ function App() {
 
             <ResponsiveShowreel
               desktopVideoId="1144825585"
-              mobileVideoId="1144825585"
+              mobileVideoId="1144198588"
               desktopThumbnailUrl="/who-is-koen-16-9.jpg"
               mobileThumbnailUrl="/who-is-koen-9-16.jpg"
               className="max-w-4xl mx-auto"
